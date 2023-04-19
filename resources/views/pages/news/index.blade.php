@@ -26,6 +26,7 @@
 <!-- LAYOUT CONTENT 1 -->
 <div class="layout-content-1 layout-item-3-1 grid-limit">
     <!-- LAYOUT BODY -->
+    @if(count($news) > 0)
     <div class="layout-body">
         <!-- LAYOUT ITEM -->
         <div class="layout-item grid-2col_3 centered gutter-mid">
@@ -111,7 +112,6 @@
 
     </div>
     <!-- /LAYOUT BODY -->
-
     <!-- LAYOUT SIDEBAR -->
     <div class="layout-sidebar layout-item gutter-medium">
         <!-- WIDGET SIDEBAR -->
@@ -185,6 +185,8 @@
         <!-- /WIDGET SIDEBAR -->
     </div>
     <!-- /LAYOUT SIDEBAR -->
+    @endif
+
 </div>
 <!-- /LAYOUT CONTENT 1 -->
 
