@@ -26,6 +26,7 @@
 <!-- LAYOUT CONTENT 1 -->
 <div class="layout-content-1 layout-item-3-1 grid-limit">
     <!-- LAYOUT BODY -->
+    @if(count($program) > 0)
     <div class="layout-body">
         <!-- SECTION TITLE WRAP -->
         <div class="section-title-wrap cyan small-space">
@@ -188,6 +189,7 @@
         <!-- /WIDGET SIDEBAR -->
     </div>
     <!-- /LAYOUT SIDEBAR -->
+    @endif
 </div>
 <!-- /LAYOUT CONTENT 1 -->
 

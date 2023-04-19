@@ -64,7 +64,7 @@
                 </div>
                 <!-- /POST AUTHOR INFO -->
                 <!-- POST PREVIEW TEXT -->
-                <p class="post-preview-text">{{ $n['description'] }}</p>
+                <p class="post-preview-text">{{ Str::limit($n['body'], 100) }}</p>
             </div>
             @endforeach
             <!-- /POST PREVIEW -->
@@ -141,7 +141,7 @@
                     <!-- /POST PREVIEW IMG WRAP -->
 
                     <!-- POST PREVIEW TITLE -->
-                    <a href="{{ route('news.detail', $p['slug']) }}" class="post-preview-title">{{ $p['name'] }}</a>
+                    <a href="{{ route('news.detail', $p['slug']) }}" class="post-preview-title">{{ Str::limit($p['name'], 65) }}</a>
                     <!-- POST AUTHOR INFO -->
                     <div class="post-author-info-wrap">
                         <p class="post-author-info small light">By <a href="#" class="post-author">{{ $p['user']->name }}</a><span class="separator">|</span>{{ date('F jS, Y', strtotime($p['created_at'])) }}</p>
@@ -186,7 +186,6 @@
     </div>
     <!-- /LAYOUT SIDEBAR -->
     @endif
-
 </div>
 <!-- /LAYOUT CONTENT 1 -->
 
