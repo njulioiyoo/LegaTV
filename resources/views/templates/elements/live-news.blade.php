@@ -3,7 +3,7 @@
 $configurations = App\Helpers\CommonHelper::getConfigurations();
 $liveNews = App\Helpers\CommonHelper::getLiveNews();
 @endphp
-@if($configurations['website_live_news'] == '1')
+@if($configurations['status_live_news'] == '1')
 <div class="live-news-widget-wrap">
     <!-- LIVE NEWS WIDGET -->
     <div class="live-news-widget grid-limit">
