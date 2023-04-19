@@ -32,6 +32,7 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
     @endif
 
     <!-- WIDGET ITEM ITEM -->
+    @if(count($program) > 0)
     <div class="widget-item">
         <!-- SECTION TITLE WRAP -->
         <div class="section-title-wrap violet">
@@ -103,6 +104,7 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
         </div>
         <!-- /CAROUSEL ITEMS -->
     </div>
+    @endif
     <!-- /CAROUSEL -->
 </div>
 <!-- /WIDGET ITEM ITEM -->

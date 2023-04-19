@@ -9,7 +9,7 @@ class MenuHelper
         return [
             [
                 'name' => 'Home',
-                'url' => '/',
+                'url' => '/live',
             ],
             [
                 'name' => 'News',
@@ -21,7 +21,7 @@ class MenuHelper
             ],
             [
                 'name' => 'Article',
-                'url' => '/article',
+                'url' => '/live',
             ],
             [
                 'name' => 'Live TV',
