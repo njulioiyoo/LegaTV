@@ -18,16 +18,16 @@ return new class extends Migration
             $table->string('type');
             $table->string('name');
             $table->string('slug')->nullable();
-            $table->string('image');
-            $table->string('source');
-            $table->string('description');
-            $table->text('body');
-            $table->bigInteger('author');
-            $table->bigInteger('parent_id');
-            $table->bigInteger('viewed');
-            $table->boolean('is_shared_to_live')->default(false);
-            $table->string('attr_1');
-            $table->bigInteger('active');
+            $table->string('image')->nullable();
+            $table->string('source')->nullable();
+            $table->string('description')->nullable();
+            $table->text('body')->nullable();
+            $table->bigInteger('author')->nullable();
+            $table->bigInteger('parent_id')->nullable();
+            $table->bigInteger('viewed')->nullable();
+            $table->boolean('is_shared_to_live')->nullable();
+            $table->string('attr_1')->nullable();
+            $table->bigInteger('active')->nullable();
             $table->timestamps();
         });
     }
