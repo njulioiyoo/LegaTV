@@ -25,7 +25,7 @@ return new class extends Migration
             $table->bigInteger('author');
             $table->bigInteger('parent_id');
             $table->bigInteger('viewed');
-            $table->boolean('is_shared_to_live_tv')->default(false);
+            $table->boolean('is_shared_to_live')->default(false);
             $table->string('attr_1');
             $table->bigInteger('active');
             $table->timestamps();

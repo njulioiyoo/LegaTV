@@ -1,6 +1,7 @@
 <!-- LIVE NEWS WIDGET WRAP -->
 @php
 $configurations = App\Helpers\CommonHelper::getConfigurations();
+$liveNews = App\Helpers\CommonHelper::getLiveNews();
 @endphp
 @if($configurations['website_live_news'] == '1')
 <div class="live-news-widget-wrap">
@@ -40,12 +41,33 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
         <!-- /LIVE NEWS WIDGET TITLE WRAP -->
 
         <!-- LIVE NEWS WIDGET TEXT WRAP -->
-        <div id="lineslide-wrap1" class="live-news-widget-text-wrap">
-            <p class="live-news-widget-text"></p>
+        @foreach ($liveNews as $item)
+        <div id="my-marquee">
+            <marquee behavior="scroll" direction="left" class="live-news-widget-text-wrap">
+                <p class="live-news-widget-text"><a href="{{ route('news.detail', $item['slug']) }}" style="color: #fff">{{ $item['name'] }}:</a> <span>{{ $item['description'] }}</span></p>
+            </marquee>
         </div>
-        <!-- /LIVE NEWS WIDGET TEXT WRAP -->
+        @endforeach
     </div>
-    <!-- /LIVE NEWS WIDGET -->
+
+    <!-- /LIVE NEWS WIDGET TEXT WRAP -->
+</div>
+<!-- /LIVE NEWS WIDGET -->
 </div>
 @endif
 <!-- /LIVE NEWS WIDGET WRAP -->
+
+@push('script')
+<script>
+    var myMarquee = document.getElementById('my-marquee');
+    var marquee = myMarquee.getElementsByTagName('marquee')[0];
+
+    myMarquee.addEventListener('mouseover', function() {
+        marquee.stop();
+    });
+
+    myMarquee.addEventListener('mouseout', function() {
+        marquee.start();
+    });
+</script>
+@endpush

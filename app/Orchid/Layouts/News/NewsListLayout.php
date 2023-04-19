@@ -46,6 +46,11 @@ class NewsListLayout extends Table
                 ->sort()
                 ->render(fn (News $news) => $news->user->name),
 
+            TD::make('is_shared_to_live', __('Share to Live News'))
+                ->sort()
+                ->render(fn (News $news) => $news->is_shared_to_live ? '<i class="text-success">●</i> True'
+                    : '<i class="text-danger">●</i> False'),
+
             TD::make('updated_at', __('Last edit'))
                 ->sort()
                 ->render(fn (News $news) => $news->updated_at),

@@ -152,7 +152,12 @@ class EditScreen extends Screen
                 Switcher::make('news.active')
                     ->sendTrueOrFalse()
                     ->title('Status')
-                    ->horizontal()
+                    ->horizontal(),
+
+                Switcher::make('news.is_shared_to_live')
+                    ->sendTrueOrFalse()
+                    ->title('Share to Live News')
+                    ->horizontal(),
             ])
 
         ];

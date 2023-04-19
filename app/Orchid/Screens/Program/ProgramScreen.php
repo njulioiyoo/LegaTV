@@ -111,9 +111,9 @@ class ProgramScreen extends Screen
                     ->sort()
                     ->render(fn (Program $program) => $program['parent']->name),
 
-                TD::make('is_shared_to_live_tv', __('Shared to Live TV'))
+                TD::make('is_shared_to_live', __('Shared to Live TV'))
                     ->sort()
-                    ->render(fn (Program $program) => $program->is_shared_to_live_tv ? '<i class="text-success">●</i> True'
+                    ->render(fn (Program $program) => $program->is_shared_to_live ? '<i class="text-success">●</i> True'
                         : '<i class="text-danger">●</i> False'),
 
                 TD::make('updated_at', __('Last edit'))
@@ -151,7 +151,7 @@ class ProgramScreen extends Screen
                         ->help('Event for free')
                         ->title('Status'),
 
-                    Switcher::make('program.is_shared_to_live_tv')
+                    Switcher::make('program.is_shared_to_live')
                         ->sendTrueOrFalse()
                         ->align(TD::ALIGN_LEFT)
                         ->placeholder('Event for free')
@@ -218,7 +218,7 @@ class ProgramScreen extends Screen
             'body' => $video['snippet']['description'],
             'attr_1' => $formattedDuration,
             'image' => $video['snippet']['thumbnails']['default']['url'],
-            'is_shared_to_live_tv' => $data['is_shared_to_live_tv'],
+            'is_shared_to_live' => $data['is_shared_to_live'],
             'active' => $data['active'],
         );
 

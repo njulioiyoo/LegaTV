@@ -53,9 +53,17 @@ class CommonHelper
     {
         return Program::where([
             ['active', '=', 1],
-            ['is_shared_to_live_tv', '=', 1]
+            ['is_shared_to_live', '=', 1]
         ])->with('user:id,name,email', 'parent:id,name')
             ->orderBy('viewed', 'desc')
             ->get(['name', 'slug', 'image', 'source', 'body', 'author', 'parent_id', 'attr_1 as duration', 'created_at']);
+    }
+
+    public static function getLiveNews()
+    {
+        return News::where([
+            ['active', '=', 1],
+            ['is_shared_to_live', '=', 1]
+        ])->latest()->get(['name', 'slug', 'description']);
     }
 }

@@ -37,7 +37,7 @@ class ProgramEditLayout extends Rows
                 ->placeholder('Share youtube id video on your program')
                 ->help('Specify a short descriptive title for this program.'),
 
-            Switcher::make('program.is_shared_to_live_tv')
+            Switcher::make('program.is_shared_to_live')
                 ->sendTrueOrFalse()
                 ->title('Share to Live TV'),
 
