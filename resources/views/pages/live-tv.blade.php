@@ -64,7 +64,6 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
         <div id="st-videos-slider" class="carousel big st-video">
             <!-- CAROUSEL ITEMS -->
             <div class="carousel-items">
-                <!-- CAROUSEL ITEM -->
                 @php
                 $postHtml = '';
                 $postCounter = 0;
@@ -73,34 +72,57 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
                 if($postCounter % 2 == 0) {
                 $postHtml .= '<div class="carousel-item">';
                     }
-                    $postHtml .= '<div class="post-preview e-sport">';
-                        $postHtml .= '<!-- POST PREVIEW ST VIDEO -->';
-                        $postHtml .= '<div class="post-preview-st-video">';
-                            $postHtml .= '<iframe src="https://www.youtube.com/embed/' . $p['source'] . '" allowfullscreen></iframe>';
-                            $postHtml .= '</div>';
-                        $postHtml .= '<!-- /POST PREVIEW ST VIDEO -->';
+
+                    $postHtml .= '<div class="post-preview video gaming-news no-hover">';
+                        $postHtml .= '<!-- POST PREVIEW IMG WRAP -->';
+                        $postHtml .= '<a href="' . route('program.detail', $p['slug']) . '">';
+                            $postHtml .= '<div class="post-preview-img-wrap">';
+                                $postHtml .= '<!-- POST PREVIEW IMG -->';
+                                $postHtml .= '<figure class="post-preview-img liquid">';
+                                    $postHtml .= '<img src="' . $p['image'] . '" alt="post-31">';
+                                    $postHtml .= '</figure>';
+                                $postHtml .= '<!-- /POST PREVIEW IMG -->';
+
+                                $postHtml .= '<!-- POST PREVIEW OVERLAY -->';
+                                $postHtml .= '<div class="post-preview-overlay">';
+                                    $postHtml .= '<!-- PLAY BUTTON -->';
+                                    $postHtml .= '<div class="play-button">';
+                                        $postHtml .= '<!-- PLAY BUTTON ICON -->';
+                                        $postHtml .= '<svg class="play-button-icon">';
+                                            $postHtml .= '<use xlink:href="#svg-play"></use>';
+                                            $postHtml .= '</svg>';
+                                        $postHtml .= '<!-- /PLAY BUTTON ICON -->';
+                                        $postHtml .= '</div>';
+                                    $postHtml .= '<!-- /PLAY BUTTON -->';
+                                    $postHtml .= '</div>';
+                                $postHtml .= '<!-- /POST PREVIEW OVERLAY -->';
+                                $postHtml .= '</div>';
+                            $postHtml .= '</a>';
+                        $postHtml .= '<!-- /POST PREVIEW IMG WRAP -->';
+
                         $postHtml .= '<!-- POST PREVIEW TITLE -->';
-                        $postHtml .= '<p class="post-preview-title">' . Str::limit($p['name'], 30) . '</p>';
+                        $postHtml .= '<a href="' . route('program.detail', $p['slug']) . '" class="post-preview-title">' . $p['name'] . '</a>';
+
                         $postHtml .= '<!-- POST AUTHOR INFO -->';
                         $postHtml .= '<div class="post-author-info-wrap">';
                             $postHtml .= '<p class="post-author-info small light">By <a href="#" class="post-author">' . $p['user']->name . '</a><span class="separator">|</span>' . date('F jS, Y', strtotime($p['created_at'])) . '</p>';
                             $postHtml .= '</div>';
                         $postHtml .= '<!-- /POST AUTHOR INFO -->';
                         $postHtml .= '</div>';
+
                     $postCounter++;
 
                     if($postCounter % 2 == 0) {
                     $postHtml .= '</div>';
                 }
                 }
+
                 if($postCounter % 2 == 1) {
-                $postHtml .= '
-            </div>';
+                $postHtml .= '</div>';
             }
             @endphp
 
             {!! $postHtml !!}
-            <!-- /CAROUSEL ITEM -->
         </div>
         <!-- /CAROUSEL ITEMS -->
     </div>

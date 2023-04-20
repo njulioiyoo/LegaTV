@@ -17,11 +17,11 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\Switcher;
 use Illuminate\Support\Str;
-use Orchid\Screen\TD;
 use Google_Service_YouTube;
 use Google_Client;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Group;
+use Orchid\Screen\TD;
 
 class ProgramScreen extends Screen
 {
@@ -147,15 +147,13 @@ class ProgramScreen extends Screen
                     Switcher::make('program.active')
                         ->sendTrueOrFalse()
                         ->align(TD::ALIGN_RIGHT)
-                        ->placeholder('Event for free')
-                        ->help('Event for free')
+                        ->help('Slide the switch to on to change it to true.')
                         ->title('Status'),
 
                     Switcher::make('program.is_shared_to_live')
                         ->sendTrueOrFalse()
                         ->align(TD::ALIGN_LEFT)
-                        ->placeholder('Event for free')
-                        ->help('Event for free')
+                        ->help('Slide the switch to on to change it to true.')
                         ->title('Share to Live TV'),
                 ]),
             ]))
