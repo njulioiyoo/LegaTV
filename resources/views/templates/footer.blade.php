@@ -46,7 +46,7 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
                         <!-- SPONSORS SLIDER ITEM -->
                         @foreach($partnerships as $k => $p)
                         <div class="sponsors-slider-item">
-                            <img style="width:106px; height:102px; " src="{{ $p['image'] }}" alt="partnership">
+                            <img style="width:106px; height:102px; border-radius: 10px;" src="{{ $p['image'] }}" alt="partnership">
                         </div>
                         @endforeach
                         <!-- /SPONSORS SLIDER ITEM -->
