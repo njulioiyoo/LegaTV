@@ -64,7 +64,7 @@
                 </div>
                 <!-- /POST AUTHOR INFO -->
                 <!-- POST PREVIEW TEXT -->
-                <p class="post-preview-text">{{ Str::limit($n['body'], 100) }}</p>
+                <p class="post-preview-text">{!! Str::limit($n['body'], 200) !!}</p>
             </div>
             @endforeach
             <!-- /POST PREVIEW -->

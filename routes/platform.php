@@ -13,7 +13,6 @@ use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 
-use App\Orchid\Screens\ContentCategories\ContentCategoriesScreen;
 use App\Orchid\Screens\Configuration\MainScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
@@ -24,9 +23,12 @@ use Tabuna\Breadcrumbs\Trail;
 
 use App\Orchid\Screens\News\ListScreen;
 use App\Orchid\Screens\News\EditScreen;
-use App\Orchid\Screens\Program\ProgramEditScreen;
-use App\Orchid\Screens\Program\ProgramListScreen;
+
 use App\Orchid\Screens\Program\ProgramScreen;
+
+use App\Orchid\Screens\MasterData\ContentType\ContentTypeScreen;
+use App\Orchid\Screens\MasterData\Partnership\PartnershipEditScreen;
+use App\Orchid\Screens\MasterData\Partnership\PartnershipListScreen;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,14 +110,35 @@ Route::screen('example-advanced', ExampleFieldsAdvancedScreen::class)->name('pla
 
 //Route::screen('idea', Idea::class, 'platform.screens.idea');
 
-// Platform > System > Content Categories
-Route::screen('content-categories', ContentCategoriesScreen::class)
-    ->name('platform.systems.content_categories')
+// Platform > System > Master Data > Content Type
+Route::screen('content-type', ContentTypeScreen::class)
+    ->name('platform.systems.content_type')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
-            ->push('Content Categories');
+            ->push('Content Type');
     });
+
+// Platform > System > Master Data > Partnership
+Route::screen('partnership', PartnershipListScreen::class)
+    ->name('platform.systems.partnerships')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Partnership'), route('platform.systems.partnerships')));
+
+// Platform > System > Master Data > Partnership > Create
+Route::screen('partnership/create', PartnershipEditScreen::class)
+    ->name('platform.systems.partnerships.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.systems.partnerships')
+        ->push(__('Create'), route('platform.systems.partnerships.create')));
+
+// Platform > System >Master Data > Partnership > Edit
+Route::screen('partnership/{partnership}/edit', PartnershipEditScreen::class)
+    ->name('platform.systems.partnerships.edit')
+    ->breadcrumbs(fn (Trail $trail, $partnership) => $trail
+        ->parent('platform.systems.partnerships')
+        ->push($partnership->name, route('platform.systems.partnerships.edit', $partnership)));
 
 // Platform > System > Program
 Route::screen('program', ProgramScreen::class)

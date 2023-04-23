@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Orchid\Screens\News;
 
 use App\Models\News;
-use App\Models\ContentCategories;
+use App\Models\ContentType;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Orchid\Screen\Action;
@@ -112,7 +112,7 @@ class EditScreen extends Screen
                     ->title('Content Categories')
                     ->required()
                     ->horizontal()
-                    ->fromModel(ContentCategories::class, 'name')->applyScope('content'),
+                    ->fromModel(ContentType::class, 'name')->applyScope('content'),
 
                 Input::make('news.name')
                     ->title('Title')

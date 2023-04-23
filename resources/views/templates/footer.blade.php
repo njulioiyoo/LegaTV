@@ -1,5 +1,6 @@
 @php
 $configurations = App\Helpers\CommonHelper::getConfigurations();
+$partnerships = App\Helpers\CommonHelper::getPartnerships();
 @endphp
 <!-- FOOTER TOP WRAP -->
 <div class="footer-top-wrap">
@@ -43,39 +44,11 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
                     <!-- SPONSORS SLIDER ITEMS -->
                     <div class="sponsors-slider-items">
                         <!-- SPONSORS SLIDER ITEM -->
+                        @foreach($partnerships as $k => $p)
                         <div class="sponsors-slider-item">
-                            <img class="sponsor-img" src="{{ asset('assets/img/sponsors/sponsor01.png') }}" alt="sponsor01">
+                            <img style="width:106px; height:102px; " src="{{ $p['image'] }}" alt="partnership">
                         </div>
-                        <!-- /SPONSORS SLIDER ITEM -->
-
-                        <!-- SPONSORS SLIDER ITEM -->
-                        <div class="sponsors-slider-item">
-                            <img class="sponsor-img" src="{{ asset('assets/img/sponsors/sponsor02.png') }}" alt="sponsor02">
-                        </div>
-                        <!-- /SPONSORS SLIDER ITEM -->
-
-                        <!-- SPONSORS SLIDER ITEM -->
-                        <div class="sponsors-slider-item">
-                            <img class="sponsor-img" src="{{ asset('assets/img/sponsors/sponsor03.png') }}" alt="sponsor03">
-                        </div>
-                        <!-- /SPONSORS SLIDER ITEM -->
-
-                        <!-- SPONSORS SLIDER ITEM -->
-                        <div class="sponsors-slider-item">
-                            <img class="sponsor-img" src="{{ asset('assets/img/sponsors/sponsor04.png') }}" alt="sponsor04">
-                        </div>
-                        <!-- /SPONSORS SLIDER ITEM -->
-
-                        <!-- SPONSORS SLIDER ITEM -->
-                        <div class="sponsors-slider-item">
-                            <img class="sponsor-img" src="{{ asset('assets/img/sponsors/sponsor05.png') }}" alt="sponsor05">
-                        </div>
-                        <!-- /SPONSORS SLIDER ITEM -->
-
-                        <!-- SPONSORS SLIDER ITEM -->
-                        <div class="sponsors-slider-item">
-                            <img class="sponsor-img" src="{{ asset('assets/img/sponsors/sponsor06.png') }}" alt="sponsor06">
-                        </div>
+                        @endforeach
                         <!-- /SPONSORS SLIDER ITEM -->
                     </div>
                     <!-- /SPONSORS SLIDER ITEMS -->
@@ -240,7 +213,7 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
             <div class="footer-top-widget">
                 <!-- SECTION TITLE WRAP -->
                 <div class="section-title-wrap blue negative">
-                    <h2 class="section-title">Latest Posts</h2>
+                    <h2 class="section-title">Latest Program</h2>
                     <div class="section-title-separator"></div>
                 </div>
                 <!-- /SECTION TITLE WRAP -->
@@ -248,27 +221,47 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
                 <!-- POST PREVIEW SHOWCASE -->
                 <div class="post-preview-showcase grid-1col gutter-small">
                     <!-- POST PREVIEW -->
-                    <div class="post-preview tiny negative gaming-news">
+                    @foreach (App\Helpers\CommonHelper::getLatestProgram(null) as $latestProgram)
+                    <div class="post-preview video negative gaming-news tiny no-hover">
                         <!-- POST PREVIEW IMG WRAP -->
-                        <a href="post-v1.html">
+                        <a href="{{ route('program.detail', $latestProgram['slug']) }}">
                             <div class="post-preview-img-wrap">
                                 <!-- POST PREVIEW IMG -->
                                 <figure class="post-preview-img liquid">
-                                    <img src="{{ asset('assets/img/posts/17.jpg') }}" alt="post-17">
+                                    <img src="{{ $latestProgram['image'] }}" alt="post-13">
                                 </figure>
                                 <!-- /POST PREVIEW IMG -->
+
+                                <!-- POST PREVIEW OVERLAY -->
+                                <div class="post-preview-overlay">
+                                    <!-- PLAY BUTTON -->
+                                    <div class="play-button tiny">
+                                        <!-- PLAY BUTTON ICON -->
+                                        <svg class="play-button-icon tiny">
+                                            <use xlink:href="#svg-play"></use>
+                                        </svg>
+                                        <!-- /PLAY BUTTON ICON -->
+                                    </div>
+                                    <!-- /PLAY BUTTON -->
+
+                                    <!-- TIMESTAMP TAG -->
+                                    <p class="timestamp-tag tiny">{{ $latestProgram['duration'] }}</p>
+                                    <!-- /TIMESTAMP TAG -->
+                                </div>
+                                <!-- /POST PREVIEW OVERLAY -->
                             </div>
                         </a>
                         <!-- /POST PREVIEW IMG WRAP -->
 
                         <!-- POST PREVIEW TITLE -->
-                        <a href="post-v1.html" class="post-preview-title">Jazzstar announced that the GTE5 for PC is delayed</a>
+                        <a href="{{ route('program.detail', $latestProgram['slug']) }}" class="post-preview-title">{{ Str::limit($latestProgram['name'], 65) }}</a>
                         <!-- POST AUTHOR INFO -->
                         <div class="post-author-info-wrap">
-                            <p class="post-author-info small light">By <a href="search-results.html" class="post-author">Dexter</a><span class="separator">|</span>Dec 15th, 2018</p>
+                            <p class="post-author-info small light">By <a href="#" class="post-author">{{ $latestProgram['user']->name }}</a><span class="separator">|</span>{{ date('F jS, Y', strtotime($latestProgram['created_at'])) }}</p>
                         </div>
                         <!-- /POST AUTHOR INFO -->
                     </div>
+                    @endforeach
                     <!-- /POST PREVIEW -->
                 </div>
                 <!-- POST PREVIEW SHOWCASE -->

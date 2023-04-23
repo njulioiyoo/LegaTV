@@ -55,11 +55,15 @@ class PlatformProvider extends OrchidServiceProvider
                 ->divider(),
 
             Menu::make('')->title(__('Master Data')),
+            Menu::make(__('Partnerships'))
+                ->icon('diamond')
+                ->route('platform.systems.partnerships')
+                ->permission('platform.systems.partnerships'),
 
-            Menu::make(__('Content Categories'))
+            Menu::make(__('Content Type'))
                 ->icon('new-doc')
-                ->route('platform.systems.content_categories')
-                ->permission('platform.systems.content_categories')->divider(),
+                ->route('platform.systems.content_type')
+                ->permission('platform.systems.content_type')->divider(),
 
             Menu::make('')->title(__('Settings')),
 
@@ -105,7 +109,8 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.systems.users', __('Users'))
                 ->addPermission('platform.systems.news', __('News'))
                 ->addPermission('platform.systems.program', __('Programs'))
-                ->addPermission('platform.systems.content_categories', __('Content Categories'))
+                ->addPermission('platform.systems.content_type', __('Content Type'))
+                ->addPermission('platform.systems.partnerships', __('Partnerships'))
                 ->addPermission('platform.systems.configurations', __('Configurations')),
         ];
     }

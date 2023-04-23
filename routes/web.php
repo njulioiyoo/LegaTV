@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('live');
-    // return view('welcome');
+    return view('welcome');
 });
 
 Route::group(['prefix' => 'news'], function () {

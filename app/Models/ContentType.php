@@ -7,7 +7,7 @@ use App\Orchid\Presenters\UserPresenter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class ContentCategories extends Content
+class ContentType extends Content
 {
     use HasFactory, AsSource;
 

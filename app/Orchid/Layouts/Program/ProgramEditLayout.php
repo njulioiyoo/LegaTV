@@ -10,7 +10,7 @@ use Orchid\Screen\Layouts\Rows;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\Switcher;
-use App\Models\ContentCategories;
+use App\Models\ContentType;
 use Orchid\Screen\Fields\Group;
 use Orchid\Screen\TD;
 
@@ -32,7 +32,7 @@ class ProgramEditLayout extends Rows
             Relation::make('program.parent_id')
                 ->title('Content Categories')
                 ->required()
-                ->fromModel(ContentCategories::class, 'name')->applyScope('vod'),
+                ->fromModel(ContentType::class, 'name')->applyScope('vod'),
 
             Input::make('program.source')
                 ->title('Youtube ID')

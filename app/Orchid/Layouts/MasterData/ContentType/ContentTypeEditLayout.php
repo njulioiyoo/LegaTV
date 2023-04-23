@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Orchid\Layouts\ContentCategories;
+namespace App\Orchid\Layouts\MasterData\ContentType;
 
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Layouts\Rows;
+use Orchid\Screen\Fields\Select;
 
-class EditLayout extends Rows
+class ContentTypeEditLayout extends Rows
 {
     /**
      * The screen's layout elements.
@@ -19,14 +19,14 @@ class EditLayout extends Rows
     public function fields(): array
     {
         return [
-            Select::make('contentCategories.type')
+            Select::make('contentType.type')
                 ->options([
                     'contents'  => 'Contents',
                     'vod'       => 'Video On Demand',
                 ])
                 ->title('Select type')
                 ->help('Allow search bots to index'),
-            Input::make('contentCategories.name')
+            Input::make('contentType.name')
                 ->type('text')
                 ->max(50)
                 ->required()

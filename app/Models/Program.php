@@ -19,7 +19,7 @@ class Program extends Content
 
     public function parent()
     {
-        return $this->belongsTo(ContentCategories::class, 'parent_id');
+        return $this->belongsTo(ContentType::class, 'parent_id');
     }
 
     /**

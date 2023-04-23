@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\Program;
 
-use App\Models\ContentCategories;
+use App\Models\ContentType;
 use App\Models\Program;
 use App\Models\User;
 use App\Orchid\Layouts\Program\ProgramEditLayout;
@@ -136,7 +136,7 @@ class ProgramScreen extends Screen
                 Relation::make('program.parent_id')
                     ->title('Program')
                     ->required()
-                    ->fromModel(ContentCategories::class, 'name')->applyScope('vod'),
+                    ->fromModel(ContentType::class, 'name')->applyScope('vod'),
 
                 Input::make('program.source')
                     ->title('Youtube ID')

@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Models\Configuration;
 use App\Models\News;
+use App\Models\Partnership;
 use App\Models\Program;
 
 class CommonHelper
@@ -65,5 +66,22 @@ class CommonHelper
             ['active', '=', 1],
             ['is_shared_to_live', '=', 1]
         ])->latest()->get(['name', 'slug', 'description']);
+    }
+
+    public static function getPartnerships()
+    {
+        return Partnership::where('active', 1)->latest()->get(['image']);
+    }
+
+    public static function getLatestProgram($slug, $limit = 3)
+    {
+        return Program::where([
+            ['active', '=', 1],
+            ['slug', '!=', $slug]
+        ])
+            ->with('user:id,name,email', 'parent:id,name')
+            ->orderBy('created_at', 'desc')
+            ->take($limit)
+            ->get(['name', 'slug', 'image', 'source', 'description', 'body', 'author', 'parent_id', 'created_at']);
     }
 }

@@ -1,39 +1,14 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // This is the bare minimum JavaScript. You can opt to pass no arguments to setup.
-    const player = new Plyr("#player");
+var elem = document.getElementById("videoPlayer");
 
-    // Expose
-    window.player = player;
-
-    // Bind event listener
-    function on(selector, type, callback) {
-        document
-            .querySelector(selector)
-            .addEventListener(type, callback, false);
+function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch(err => {
+            alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+    } else {
+        document.exitFullscreen();
     }
-
-    // Play
-    on(".js-play", "click", () => {
-        player.play();
-    });
-
-    // Pause
-    on(".js-pause", "click", () => {
-        player.pause();
-    });
-
-    // Stop
-    on(".js-stop", "click", () => {
-        player.stop();
-    });
-
-    // Rewind
-    on(".js-rewind", "click", () => {
-        player.rewind();
-    });
-
-    // Forward
-    on(".js-forward", "click", () => {
-        player.forward();
-    });
+}
+elem.addEventListener("click", function() {
+    toggleFullScreen();
 });

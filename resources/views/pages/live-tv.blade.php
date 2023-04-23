@@ -1,7 +1,17 @@
 @extends('templates.layout')
 
 @push('css')
-<link rel="stylesheet" href="https://cdn.plyr.io/3.4.6/plyr.css">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -23,9 +33,7 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
         </div>
         <!-- /SECTION TITLE WRAP -->
         <div class="container">
-            <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" height="500">
-                <source src="{{ $configurations['live_tv'] }}" type="application/x-mpegURL" />
-            </video>
+            <video id="videoPlayer" autoplay controls></video>
         </div>
     </div>
     <!-- /WIDGET ITEM -->
@@ -137,24 +145,22 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
 
 @push('script')
 <script src="{{ asset('assets/js/custom.js') }}"></script>
-
-<!-- Load library video.js CSS -->
-<link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet" />
-<!-- Load library video.js JS -->
-<script src="https://vjs.zencdn.net/7.14.3/video.min.js"></script>
-<!-- Load video.js HLS plugin -->
-<script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.15.0/dist/videojs-contrib-hls.min.js"></script>
-
-<script src="https://cdn.plyr.io/3.4.6/plyr.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script>
-    // Inisialisasi video player
-    var player = videojs("my-video");
-
-    // Gunakan video.js HLS plugin untuk memutar format M3U8
-    player.play();
-
-    // Optional: atur volume ke nilai tertentu
-    player.volume(0.5);
+    var videoSource = '{{ $configurations['live_tv'] }}';
+    if (Hls.isSupported()) {
+        var video = document.getElementById('videoPlayer');
+        var hls = new Hls();
+        hls.loadSource(videoSource);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            video.play();
+        });
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = videoSource;
+        video.addEventListener('loadedmetadata', function() {
+            video.play();
+        });
+    }
 </script>
 @endpush
