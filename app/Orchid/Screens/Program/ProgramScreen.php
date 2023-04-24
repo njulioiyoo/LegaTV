@@ -215,7 +215,7 @@ class ProgramScreen extends Screen
             'slug' => Str::slug($video['snippet']['title']),
             'body' => $video['snippet']['description'],
             'attr_1' => $formattedDuration,
-            'image' => $video['snippet']['thumbnails']['default']['url'],
+            'image' => $video['snippet']['thumbnails']['maxres']['url'],
             'is_shared_to_live' => $data['is_shared_to_live'],
             'active' => $data['active'],
         );

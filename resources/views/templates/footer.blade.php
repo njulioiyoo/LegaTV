@@ -172,7 +172,7 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
             <div class="footer-top-widget">
                 <!-- SECTION TITLE WRAP -->
                 <div class="section-title-wrap red negative">
-                    <h2 class="section-title">Latest Reviews</h2>
+                    <h2 class="section-title">Latest News</h2>
                     <div class="section-title-separator"></div>
                 </div>
                 <!-- /SECTION TITLE WRAP -->
@@ -195,7 +195,7 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
                         <!-- /POST PREVIEW IMG WRAP -->
 
                         <!-- POST PREVIEW TITLE -->
-                        <a href="{{ route('news.detail', $latestNews['slug']) }}" class="post-preview-title">{{ $latestNews['name'] }}</a>
+                        <a href="{{ route('news.detail', $latestNews['slug']) }}" class="post-preview-title">{{ Str::limit($latestNews['name'], 65) }}</a>
                         <!-- POST AUTHOR INFO -->
                         <div class="post-author-info-wrap">
                             <p class="post-author-info small light">By <a href="#" class="post-author">{{ $latestNews['user']->name }}</a><span class="separator">|</span>{{ date('F jS, Y', strtotime($latestNews['created_at'])) }}</p>
@@ -272,7 +272,7 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
             <div class="footer-top-widget">
                 <!-- SECTION TITLE WRAP -->
                 <div class="section-title-wrap blue negative">
-                    <h2 class="section-title">Popular Posts</h2>
+                    <h2 class="section-title">Popular News</h2>
                     <div class="section-title-separator"></div>
                 </div>
                 <!-- /SECTION TITLE WRAP -->
@@ -295,7 +295,7 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
                         <!-- /POST PREVIEW IMG WRAP -->
 
                         <!-- POST PREVIEW TITLE -->
-                        <a href="{{ route('news.detail', $popularNews['slug']) }}" class="post-preview-title">{{ $popularNews['name'] }}</a>
+                        <a href="{{ route('news.detail', $popularNews['slug']) }}" class="post-preview-title">{{ Str::limit($popularNews['name'], 65) }}</a>
                         <!-- POST AUTHOR INFO -->
                         <div class="post-author-info-wrap">
                             <p class="post-author-info small light">By <a href="#" class="post-author">{{ $popularNews['user']->name }}</a><span class="separator">|</span>{{ date('F jS, Y', strtotime($popularNews['created_at'])) }}</p>

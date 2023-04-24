@@ -1422,12 +1422,13 @@
                 <!-- CAROUSEL ITEMS -->
                 <div class="carousel-items">
                     <!-- POST PREVIEW -->
+                    @foreach (App\Helpers\CommonHelper::getLatestProgram(null) as $latestProgram)
                     <div class="post-preview video large no-hover">
                         <!-- POST PREVIEW IMG WRAP -->
                         <div class="post-preview-img-wrap">
                             <!-- POST PREVIEW IMG -->
                             <figure class="post-preview-img liquid">
-                                <img src="assets/img/posts/03.jpg" alt="post-03">
+                                <img src="{{ $latestProgram['image'] }}" alt="post-03">
                             </figure>
                             <!-- /POST PREVIEW IMG -->
 
@@ -1446,9 +1447,9 @@
                                 <!-- POST PREVIEW OVERLAY INFO -->
                                 <div class="post-preview-overlay-info">
                                     <!-- POST PREVIEW TITLE -->
-                                    <p class="post-preview-title">"The Sandbenders II" Worldwide Trailer</p>
+                                    <p class="post-preview-title">{{ $latestProgram['name'] }}</p>
                                     <!-- POST PREVIEW TEXT -->
-                                    <p class="post-preview-text">03:22</p>
+                                    <p class="post-preview-text">{{ $latestProgram['duration'] }}</p>
                                 </div>
                                 <!-- /POST PREVIEW OVERLAY INFO -->
                             </div>
@@ -1456,55 +1457,13 @@
 
                             <!-- POST PREVIEW VIDEO -->
                             <div class="post-preview-video-wrap">
-                                <iframe class="post-preview-video" src="https://www.youtube.com/embed/zUGZYh2HxHM" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe class="post-preview-video" src="https://www.youtube.com/embed/{{ $latestProgram['source'] }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             <!-- /POST PREVIEW VIDEO -->
                         </div>
                         <!-- /POST PREVIEW IMG WRAP -->
                     </div>
-                    <!-- /POST PREVIEW -->
-
-                    <!-- POST PREVIEW -->
-                    <div class="post-preview video large no-hover">
-                        <!-- POST PREVIEW IMG WRAP -->
-                        <div class="post-preview-img-wrap">
-                            <!-- POST PREVIEW IMG -->
-                            <figure class="post-preview-img liquid">
-                                <img src="assets/img/posts/25.jpg" alt="post-25">
-                            </figure>
-                            <!-- /POST PREVIEW IMG -->
-
-                            <!-- POST PREVIEW OVERLAY -->
-                            <div class="post-preview-overlay">
-                                <!-- PLAY BUTTON -->
-                                <div class="play-button big">
-                                    <!-- PLAY BUTTON ICON -->
-                                    <svg class="play-button-icon big">
-                                        <use xlink:href="#svg-play"></use>
-                                    </svg>
-                                    <!-- /PLAY BUTTON ICON -->
-                                </div>
-                                <!-- /PLAY BUTTON -->
-
-                                <!-- POST PREVIEW OVERLAY INFO -->
-                                <div class="post-preview-overlay-info">
-                                    <!-- POST PREVIEW TITLE -->
-                                    <p class="post-preview-title">Gameplay trailer for the new Legend of Kenji game</p>
-                                    <!-- POST PREVIEW TEXT -->
-                                    <p class="post-preview-text">05:34</p>
-                                </div>
-                                <!-- /POST PREVIEW OVERLAY INFO -->
-                            </div>
-                            <!-- /POST PREVIEW OVERLAY -->
-
-                            <!-- POST PREVIEW VIDEO -->
-                            <div class="post-preview-video-wrap">
-                                <iframe class="post-preview-video" src="https://www.youtube.com/embed/YIrCX5PomuA" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                            <!-- /POST PREVIEW VIDEO -->
-                        </div>
-                        <!-- /POST PREVIEW IMG WRAP -->
-                    </div>
+                    @endforeach
                     <!-- /POST PREVIEW -->
                 </div>
                 <!-- /CAROUSEL ITEMS -->
@@ -1542,266 +1501,7 @@
         <div class="widget-sidebar">
             <!-- SECTION TITLE WRAP -->
             <div class="section-title-wrap blue">
-                <h2 class="section-title medium">Social Pixel</h2>
-                <div class="section-title-separator"></div>
-            </div>
-            <!-- /SECTION TITLE WRAP -->
-
-            <!-- SOCIAL LINKS -->
-            <div class="social-links medium centered">
-                <!-- BUBBLE ORNAMENT -->
-                <a href="#" class="bubble-ornament big fb">
-                    <!-- FACEBOOK ICON -->
-                    <svg class="facebook-icon big">
-                        <use xlink:href="#svg-facebook"></use>
-                    </svg>
-                    <!-- /FACEBOOK ICON -->
-                    <p class="bubble-ornament-text">2560</p>
-                </a>
-                <!-- /BUBBLE ORNAMENT -->
-
-                <!-- BUBBLE ORNAMENT -->
-                <a href="#" class="bubble-ornament big twt">
-                    <!-- TWITTER ICON -->
-                    <svg class="twitter-icon big">
-                        <use xlink:href="#svg-twitter"></use>
-                    </svg>
-                    <!-- /TWITTER ICON -->
-                    <p class="bubble-ornament-text">1945</p>
-                </a>
-                <!-- /BUBBLE ORNAMENT -->
-
-                <!-- BUBBLE ORNAMENT -->
-                <a href="#" class="bubble-ornament big insta">
-                    <!-- INSTAGRAM ICON -->
-                    <svg class="instagram-icon big">
-                        <use xlink:href="#svg-instagram"></use>
-                    </svg>
-                    <!-- /INSTAGRAM ICON -->
-                    <p class="bubble-ornament-text">835</p>
-                </a>
-                <!-- /BUBBLE ORNAMENT -->
-
-                <!-- BUBBLE ORNAMENT -->
-                <a href="#" class="bubble-ornament big twitch">
-                    <!-- TWITCH ICON -->
-                    <svg class="twitch-icon big">
-                        <use xlink:href="#svg-twitch"></use>
-                    </svg>
-                    <!-- /TWITCH ICON -->
-                    <p class="bubble-ornament-text">9632</p>
-                </a>
-                <!-- /BUBBLE ORNAMENT -->
-            </div>
-            <!-- /SOCIAL LINKS -->
-        </div>
-        <!-- /WIDGET SIDEBAR -->
-
-        <!-- WIDGET SIDEBAR -->
-        <div class="widget-sidebar">
-            <!-- SECTION TITLE WRAP -->
-            <div class="section-title-wrap violet small-space">
-                <h2 class="section-title medium">Esports Standings</h2>
-                <div class="section-title-separator"></div>
-            </div>
-            <!-- /SECTION TITLE WRAP -->
-
-            <!-- TABLE -->
-            <div class="table standings">
-                <!-- TABLE ROW HEADER -->
-                <div class="table-row-header">
-                    <!-- TABLE ROW HEADER ITEM -->
-                    <div class="table-row-header-item position">
-                        <p class="table-row-header-title">Position</p>
-                    </div>
-                    <!-- /TABLE ROW HEADER ITEM -->
-
-                    <!-- TABLE ROW HEADER ITEM -->
-                    <div class="table-row-header-item">
-                        <p class="table-row-header-title">Match Record</p>
-                    </div>
-                    <!-- /TABLE ROW HEADER ITEM -->
-                </div>
-                <!-- /TABLE ROW HEADER -->
-
-                <!-- TABLE ROWS -->
-                <div class="table-rows">
-                    <!-- TABLE ROW -->
-                    <div class="table-row">
-                        <!-- TABLE ROW ITEM -->
-                        <div class="table-row-item position">
-                            <!-- TABLE TEXT -->
-                            <p class="table-text">01</p>
-                            <!-- /TABLE TEXT -->
-
-                            <!-- TEAM INFO WRAP -->
-                            <div class="team-info-wrap">
-                                <!-- TEAM LOGO -->
-                                <img class="team-logo small" src="assets/img/teams/logos/01.png" alt="logo-01">
-                                <!-- /TEAM LOGO -->
-
-                                <!-- TEAM INFO -->
-                                <div class="team-info">
-                                    <p class="team-name">The Lone Wolves</p>
-                                    <p class="team-country">United States</p>
-                                </div>
-                                <!-- /TEAM INFO -->
-                            </div>
-                            <!-- /TEAM INFO WRAP -->
-                        </div>
-                        <!-- /TABLE ROW ITEM -->
-
-                        <!-- TABLE ROW ITEM -->
-                        <div class="table-row-item">
-                            <p class="table-text bold">28 - 14</p>
-                        </div>
-                        <!-- /TABLE ROW ITEM -->
-                    </div>
-                    <!-- /TABLE ROW -->
-
-                    <!-- TABLE ROW -->
-                    <div class="table-row">
-                        <!-- TABLE ROW ITEM -->
-                        <div class="table-row-item position">
-                            <!-- TABLE TEXT -->
-                            <p class="table-text">02</p>
-                            <!-- /TABLE TEXT -->
-
-                            <!-- TEAM INFO WRAP -->
-                            <div class="team-info-wrap">
-                                <!-- TEAM LOGO -->
-                                <img class="team-logo small" src="assets/img/teams/logos/02.png" alt="logo-02">
-                                <!-- /TEAM LOGO -->
-
-                                <!-- TEAM INFO -->
-                                <div class="team-info">
-                                    <p class="team-name">Raging Rhinos</p>
-                                    <p class="team-country">South Africa</p>
-                                </div>
-                                <!-- /TEAM INFO -->
-                            </div>
-                            <!-- /TEAM INFO WRAP -->
-                        </div>
-                        <!-- /TABLE ROW ITEM -->
-
-                        <!-- TABLE ROW ITEM -->
-                        <div class="table-row-item">
-                            <p class="table-text bold">27 - 13</p>
-                        </div>
-                        <!-- /TABLE ROW ITEM -->
-                    </div>
-                    <!-- /TABLE ROW -->
-
-                    <!-- TABLE ROW -->
-                    <div class="table-row">
-                        <!-- TABLE ROW ITEM -->
-                        <div class="table-row-item position">
-                            <!-- TABLE TEXT -->
-                            <p class="table-text">03</p>
-                            <!-- /TABLE TEXT -->
-
-                            <!-- TEAM INFO WRAP -->
-                            <div class="team-info-wrap">
-                                <!-- TEAM LOGO -->
-                                <img class="team-logo small" src="assets/img/teams/logos/03.png" alt="logo-03">
-                                <!-- /TEAM LOGO -->
-
-                                <!-- TEAM INFO -->
-                                <div class="team-info">
-                                    <p class="team-name">Los Toreros</p>
-                                    <p class="team-country">Spain</p>
-                                </div>
-                                <!-- /TEAM INFO -->
-                            </div>
-                            <!-- /TEAM INFO WRAP -->
-                        </div>
-                        <!-- /TABLE ROW ITEM -->
-
-                        <!-- TABLE ROW ITEM -->
-                        <div class="table-row-item">
-                            <p class="table-text bold">26 - 11</p>
-                        </div>
-                        <!-- /TABLE ROW ITEM -->
-                    </div>
-                    <!-- /TABLE ROW -->
-
-                    <!-- TABLE ROW -->
-                    <div class="table-row">
-                        <!-- TABLE ROW ITEM -->
-                        <div class="table-row-item position">
-                            <!-- TABLE TEXT -->
-                            <p class="table-text">04</p>
-                            <!-- /TABLE TEXT -->
-
-                            <!-- TEAM INFO WRAP -->
-                            <div class="team-info-wrap">
-                                <!-- TEAM LOGO -->
-                                <img class="team-logo small" src="assets/img/teams/logos/04.png" alt="logo-04">
-                                <!-- /TEAM LOGO -->
-
-                                <!-- TEAM INFO -->
-                                <div class="team-info">
-                                    <p class="team-name">Siberian Tigers</p>
-                                    <p class="team-country">Russia</p>
-                                </div>
-                                <!-- /TEAM INFO -->
-                            </div>
-                            <!-- /TEAM INFO WRAP -->
-                        </div>
-                        <!-- /TABLE ROW ITEM -->
-
-                        <!-- TABLE ROW ITEM -->
-                        <div class="table-row-item">
-                            <p class="table-text bold">20 - 19</p>
-                        </div>
-                        <!-- /TABLE ROW ITEM -->
-                    </div>
-                    <!-- /TABLE ROW -->
-
-                    <!-- TABLE ROW -->
-                    <div class="table-row">
-                        <!-- TABLE ROW ITEM -->
-                        <div class="table-row-item position">
-                            <!-- TABLE TEXT -->
-                            <p class="table-text">05</p>
-                            <!-- /TABLE TEXT -->
-
-                            <!-- TEAM INFO WRAP -->
-                            <div class="team-info-wrap">
-                                <!-- TEAM LOGO -->
-                                <img class="team-logo small" src="assets/img/teams/logos/05.png" alt="logo-05">
-                                <!-- /TEAM LOGO -->
-
-                                <!-- TEAM INFO -->
-                                <div class="team-info">
-                                    <p class="team-name">Crimson Pack</p>
-                                    <p class="team-country">Japan</p>
-                                </div>
-                                <!-- /TEAM INFO -->
-                            </div>
-                            <!-- /TEAM INFO WRAP -->
-                        </div>
-                        <!-- /TABLE ROW ITEM -->
-
-                        <!-- TABLE ROW ITEM -->
-                        <div class="table-row-item">
-                            <p class="table-text bold">19 - 21</p>
-                        </div>
-                        <!-- /TABLE ROW ITEM -->
-                    </div>
-                    <!-- /TABLE ROW -->
-                </div>
-                <!-- /TABLE ROWS -->
-            </div>
-            <!-- /TABLE -->
-        </div>
-        <!-- /WIDGET SIDEBAR -->
-
-        <!-- WIDGET SIDEBAR -->
-        <div class="widget-sidebar">
-            <!-- SECTION TITLE WRAP -->
-            <div class="section-title-wrap blue">
-                <h2 class="section-title medium">Popular Posts</h2>
+                <h2 class="section-title medium">Popular News</h2>
                 <div class="section-title-separator"></div>
             </div>
             <!-- /SECTION TITLE WRAP -->
@@ -1809,13 +1509,14 @@
             <!-- POST PREVIEW SHOWCASE -->
             <div class="post-preview-showcase grid-1col centered gutter-small">
                 <!-- POST PREVIEW -->
+                @foreach (App\Helpers\CommonHelper::getPopularNews(null) as $popularNews)
                 <div class="post-preview tiny gaming-news">
                     <!-- POST PREVIEW IMG WRAP -->
-                    <a href="post-v1.html">
+                    <a href="{{ route('news.detail', $popularNews['slug']) }}">
                         <div class="post-preview-img-wrap">
                             <!-- POST PREVIEW IMG -->
                             <figure class="post-preview-img liquid">
-                                <img src="assets/img/posts/01.jpg" alt="post-01">
+                                <img src="{{ $popularNews['image'] }}" alt="post-01">
                             </figure>
                             <!-- /POST PREVIEW IMG -->
                         </div>
@@ -1823,140 +1524,14 @@
                     <!-- /POST PREVIEW IMG WRAP -->
 
                     <!-- POST PREVIEW TITLE -->
-                    <a href="post-v1.html" class="post-preview-title">The Clash of Dragons is breaking record sales in USA and Japan</a>
+                    <a href="{ route('news.detail', $popularNews['slug']) }}" class="post-preview-title">{{ Str::limit($popularNews['name'], 65) }}</a>
                     <!-- POST AUTHOR INFO -->
                     <div class="post-author-info-wrap">
-                        <p class="post-author-info small light">By <a href="search-results.html" class="post-author">Dexter</a><span class="separator">|</span>Dec 15th, 2018</p>
+                        <p class="post-author-info small light">By <a href="#" class="post-author">{{ $popularNews['user']->name }}</a><span class="separator">|</span>{{ date('F jS, Y', strtotime($popularNews['created_at'])) }}</p>
                     </div>
                     <!-- /POST AUTHOR INFO -->
                 </div>
-                <!-- /POST PREVIEW -->
-
-                <!-- POST PREVIEW -->
-                <div class="post-preview tiny game-review">
-                    <!-- POST PREVIEW IMG WRAP -->
-                    <a href="post-v2.html">
-                        <div class="post-preview-img-wrap">
-                            <!-- POST PREVIEW IMG -->
-                            <figure class="post-preview-img liquid">
-                                <img src="assets/img/posts/25.jpg" alt="post-25">
-                            </figure>
-                            <!-- /POST PREVIEW IMG -->
-
-                            <!-- REVIEW RATING -->
-                            <div class="review-rating">
-                                <div id="sidebar-rate-1" class="arc tiny"></div>
-                            </div>
-                            <!-- /REVIEW RATING -->
-                        </div>
-                    </a>
-                    <!-- /POST PREVIEW IMG WRAP -->
-
-                    <!-- POST PREVIEW TITLE -->
-                    <a href="post-v2.html" class="post-preview-title">"Legend of Kenshii II" is a bit green for now</a>
-                    <!-- POST AUTHOR INFO -->
-                    <div class="post-author-info-wrap">
-                        <p class="post-author-info small light">By <a href="search-results.html" class="post-author">Vellatrix</a><span class="separator">|</span>Dec 15th, 2018</p>
-                    </div>
-                    <!-- /POST AUTHOR INFO -->
-                </div>
-                <!-- /POST PREVIEW -->
-
-                <!-- POST PREVIEW -->
-                <div class="post-preview tiny movie-news">
-                    <!-- POST PREVIEW IMG WRAP -->
-                    <a href="post-v3.html">
-                        <div class="post-preview-img-wrap">
-                            <!-- POST PREVIEW IMG -->
-                            <figure class="post-preview-img liquid">
-                                <img src="assets/img/posts/12.jpg" alt="post-12">
-                            </figure>
-                            <!-- /POST PREVIEW IMG -->
-
-                            <!-- RATING ORNAMENT -->
-                            <div class="rating-ornament">
-                                <!-- RATING ORNAMENT ITEM -->
-                                <div class="rating-ornament-item">
-                                    <!-- RATING ORNAMENT ICON -->
-                                    <svg class="rating-ornament-icon">
-                                        <use xlink:href="#svg-star"></use>
-                                    </svg>
-                                </div>
-                                <!-- /RATING ORNAMENT ITEM -->
-
-                                <!-- RATING ORNAMENT ITEM -->
-                                <div class="rating-ornament-item">
-                                    <!-- RATING ORNAMENT ICON -->
-                                    <svg class="rating-ornament-icon">
-                                        <use xlink:href="#svg-star"></use>
-                                    </svg>
-                                </div>
-                                <!-- /RATING ORNAMENT ITEM -->
-
-                                <!-- RATING ORNAMENT ITEM -->
-                                <div class="rating-ornament-item">
-                                    <!-- RATING ORNAMENT ICON -->
-                                    <svg class="rating-ornament-icon">
-                                        <use xlink:href="#svg-star"></use>
-                                    </svg>
-                                </div>
-                                <!-- /RATING ORNAMENT ITEM -->
-
-                                <!-- RATING ORNAMENT ITEM -->
-                                <div class="rating-ornament-item">
-                                    <!-- RATING ORNAMENT ICON -->
-                                    <svg class="rating-ornament-icon empty">
-                                        <use xlink:href="#svg-star"></use>
-                                    </svg>
-                                </div>
-                                <!-- /RATING ORNAMENT ITEM -->
-
-                                <!-- RATING ORNAMENT ITEM -->
-                                <div class="rating-ornament-item">
-                                    <!-- RATING ORNAMENT ICON -->
-                                    <svg class="rating-ornament-icon empty">
-                                        <use xlink:href="#svg-star"></use>
-                                    </svg>
-                                </div>
-                                <!-- /RATING ORNAMENT ITEM -->
-                            </div>
-                            <!-- /RATING ORNAMENT -->
-                        </div>
-                    </a>
-                    <!-- /POST PREVIEW IMG WRAP -->
-
-                    <!-- POST PREVIEW TITLE -->
-                    <a href="post-v3.html" class="post-preview-title">We reviewed the "Guardians of the Universe" movie</a>
-                    <!-- POST AUTHOR INFO -->
-                    <div class="post-author-info-wrap">
-                        <p class="post-author-info small light">By <a href="search-results.html" class="post-author">Faye V.</a><span class="separator">|</span>Dec 15th, 2018</p>
-                    </div>
-                    <!-- /POST AUTHOR INFO -->
-                </div>
-                <!-- /POST PREVIEW -->
-
-                <!-- POST PREVIEW -->
-                <div class="post-preview tiny gaming-news">
-                    <!-- POST PREVIEW IMG WRAP -->
-                    <a href="post-v1.html">
-                        <div class="post-preview-img-wrap">
-                            <!-- POST PREVIEW IMG -->
-                            <figure class="post-preview-img liquid">
-                                <img src="assets/img/posts/17.jpg" alt="post-17">
-                            </figure>
-                            <!-- /POST PREVIEW IMG -->
-                        </div>
-                    </a>
-                    <!-- /POST PREVIEW IMG WRAP -->
-
-                    <!-- POST PREVIEW TITLE -->
-                    <a href="post-v1.html" class="post-preview-title">Jazzstar announced that the GTE5 for PC is delayed</a>
-                    <!-- POST AUTHOR INFO -->
-                    <div class="post-author-info-wrap">
-                        <p class="post-author-info small light">By <a href="search-results.html" class="post-author">Dexter</a><span class="separator">|</span>Dec 15th, 2018</p>
-                    </div>
-                    <!-- /POST AUTHOR INFO -->
-                </div>
+                @endforeach
                 <!-- /POST PREVIEW -->
             </div>
             <!-- /POST PREVIEW SHOWCASE -->
@@ -1967,7 +1542,7 @@
         <div class="widget-sidebar">
             <!-- SECTION TITLE WRAP -->
             <div class="section-title-wrap red">
-                <h2 class="section-title medium">Latest Reviews</h2>
+                <h2 class="section-title medium">Latest News</h2>
                 <div class="section-title-separator"></div>
             </div>
             <!-- /SECTION TITLE WRAP -->
@@ -1975,123 +1550,29 @@
             <!-- POST PREVIEW SHOWCASE -->
             <div class="post-preview-showcase grid-1col centered gutter-small">
                 <!-- POST PREVIEW -->
+                @foreach (App\Helpers\CommonHelper::getLatestNews(null) as $latestNews)
                 <div class="post-preview tiny game-review">
                     <!-- POST PREVIEW IMG WRAP -->
-                    <a href="post-v2.html">
+                    <a href="{{ route('news.detail', $latestNews['slug']) }}">
                         <div class="post-preview-img-wrap">
                             <!-- POST PREVIEW IMG -->
                             <figure class="post-preview-img liquid">
-                                <img src="assets/img/posts/16.jpg" alt="post-16">
+                                <img src="{{ $latestNews['image'] }}" alt="post-16">
                             </figure>
                             <!-- /POST PREVIEW IMG -->
-
-                            <!-- REVIEW RATING -->
-                            <div class="review-rating">
-                                <div id="sidebar-rate-2" class="arc tiny"></div>
-                            </div>
-                            <!-- /REVIEW RATING -->
                         </div>
                     </a>
                     <!-- /POST PREVIEW IMG WRAP -->
 
                     <!-- POST PREVIEW TITLE -->
-                    <a href="post-v2.html" class="post-preview-title">We reviewed the new Magimons game</a>
+                    <a href="{{ route('news.detail', $latestNews['slug']) }}" class="post-preview-title">{{ Str::limit($latestNews['name'], 65) }}</a>
                     <!-- POST AUTHOR INFO -->
                     <div class="post-author-info-wrap">
-                        <p class="post-author-info small light">By <a href="search-results.html" class="post-author">Vellatrix</a><span class="separator">|</span>Dec 15th, 2018</p>
+                        <p class="post-author-info small light">By <a href="#" class="post-author">{{ $latestNews['user']->name }}</a><span class="separator">|</span>{{ date('F jS, Y', strtotime($latestNews['created_at'])) }}</p>
                     </div>
                     <!-- /POST AUTHOR INFO -->
                 </div>
-                <!-- /POST PREVIEW -->
-
-                <!-- POST PREVIEW -->
-                <div class="post-preview tiny game-review">
-                    <!-- POST PREVIEW IMG WRAP -->
-                    <a href="post-v2.html">
-                        <div class="post-preview-img-wrap">
-                            <!-- POST PREVIEW IMG -->
-                            <figure class="post-preview-img liquid">
-                                <img src="assets/img/posts/25.jpg" alt="post-25">
-                            </figure>
-                            <!-- /POST PREVIEW IMG -->
-
-                            <!-- REVIEW RATING -->
-                            <div class="review-rating">
-                                <div id="sidebar-rate-3" class="arc tiny"></div>
-                            </div>
-                            <!-- /REVIEW RATING -->
-                        </div>
-                    </a>
-                    <!-- /POST PREVIEW IMG WRAP -->
-
-                    <!-- POST PREVIEW TITLE -->
-                    <a href="post-v2.html" class="post-preview-title">"Legend of Kenshii II" is a bit green for now</a>
-                    <!-- POST AUTHOR INFO -->
-                    <div class="post-author-info-wrap">
-                        <p class="post-author-info small light">By <a href="search-results.html" class="post-author">Vellatrix</a><span class="separator">|</span>Dec 15th, 2018</p>
-                    </div>
-                    <!-- /POST AUTHOR INFO -->
-                </div>
-                <!-- /POST PREVIEW -->
-
-                <!-- POST PREVIEW -->
-                <div class="post-preview tiny game-review">
-                    <!-- POST PREVIEW IMG WRAP -->
-                    <a href="post-v2.html">
-                        <div class="post-preview-img-wrap">
-                            <!-- POST PREVIEW IMG -->
-                            <figure class="post-preview-img liquid">
-                                <img src="assets/img/posts/05.jpg" alt="post-05">
-                            </figure>
-                            <!-- /POST PREVIEW IMG -->
-
-                            <!-- REVIEW RATING -->
-                            <div class="review-rating">
-                                <div id="sidebar-rate-4" class="arc tiny"></div>
-                            </div>
-                            <!-- /REVIEW RATING -->
-                        </div>
-                    </a>
-                    <!-- /POST PREVIEW IMG WRAP -->
-
-                    <!-- POST PREVIEW TITLE -->
-                    <a href="post-v2.html" class="post-preview-title">We reviewed the new and exciting fantasy game "Olympus"</a>
-                    <!-- POST AUTHOR INFO -->
-                    <div class="post-author-info-wrap">
-                        <p class="post-author-info small light">By <a href="search-results.html" class="post-author">Morgana</a><span class="separator">|</span>Dec 15th, 2018</p>
-                    </div>
-                    <!-- /POST AUTHOR INFO -->
-                </div>
-                <!-- /POST PREVIEW -->
-
-                <!-- POST PREVIEW -->
-                <div class="post-preview tiny game-review">
-                    <!-- POST PREVIEW IMG WRAP -->
-                    <a href="post-v2.html">
-                        <div class="post-preview-img-wrap">
-                            <!-- POST PREVIEW IMG -->
-                            <figure class="post-preview-img liquid">
-                                <img src="assets/img/posts/08.jpg" alt="post-08">
-                            </figure>
-                            <!-- /POST PREVIEW IMG -->
-
-                            <!-- REVIEW RATING -->
-                            <div class="review-rating">
-                                <div id="sidebar-rate-5" class="arc tiny"></div>
-                            </div>
-                            <!-- /REVIEW RATING -->
-                        </div>
-                    </a>
-                    <!-- /POST PREVIEW IMG WRAP -->
-
-                    <!-- POST PREVIEW TITLE -->
-                    <a href="post-v2.html" class="post-preview-title">The new Mecha Cyborg game is breaking barriers</a>
-                    <!-- POST AUTHOR INFO -->
-                    <div class="post-author-info-wrap">
-                        <p class="post-author-info small light">By <a href="search-results.html" class="post-author">Vellatrix</a><span class="separator">|</span>Dec 15th, 2018</p>
-                    </div>
-                    <!-- /POST AUTHOR INFO -->
-                </div>
+                @endforeach
                 <!-- /POST PREVIEW -->
             </div>
             <!-- /POST PREVIEW SHOWCASE -->
@@ -2179,139 +1660,6 @@
                 <!-- /EVENT PREVIEW ITEM -->
             </div>
             <!-- /EVENTS PREVIEW -->
-        </div>
-        <!-- /WIDGET SIDEBAR -->
-
-        <!-- WIDGET SIDEBAR -->
-        <div class="widget-sidebar">
-            <!-- SECTION TITLE WRAP -->
-            <div class="section-title-wrap red">
-                <h2 class="section-title medium">Pixelated Poll</h2>
-                <div class="section-title-separator"></div>
-            </div>
-            <!-- /SECTION TITLE WRAP -->
-
-            <!-- POLL WIDGET -->
-            <div class="poll-widget">
-                <!-- POLL WIDGET TITLE -->
-                <p class="poll-widget-title">What actor do you like to play "James" in the upcoming Firestorm movie?</p>
-                <!-- /POLL WIDGET TITLE -->
-
-                <!-- POLL RESULTS WRAP -->
-                <div class="poll-results-wrap">
-                    <!-- PROGRESS BAR -->
-                    <div id="poll-result-1" class="progress-bar link-full red">
-                        <!-- BAR PROGRESS INFO -->
-                        <p class="bar-progress-info">Stephen Clark Jones</p>
-                        <!-- /BAR PROGRESS INFO -->
-                    </div>
-                    <!-- /PROGRESS BAR -->
-
-                    <!-- PROGRESS BAR -->
-                    <div id="poll-result-2" class="progress-bar link-full red">
-                        <!-- BAR PROGRESS INFO -->
-                        <p class="bar-progress-info">Derek Richardson</p>
-                        <!-- /BAR PROGRESS INFO -->
-                    </div>
-                    <!-- /PROGRESS BAR -->
-
-                    <!-- PROGRESS BAR -->
-                    <div id="poll-result-3" class="progress-bar link-full red">
-                        <!-- BAR PROGRESS INFO -->
-                        <p class="bar-progress-info">Jhonathan Specter</p>
-                        <!-- /BAR PROGRESS INFO -->
-                    </div>
-                    <!-- /PROGRESS BAR -->
-
-                    <!-- PROGRESS BAR -->
-                    <div id="poll-result-4" class="progress-bar link-full red">
-                        <!-- BAR PROGRESS INFO -->
-                        <p class="bar-progress-info">Robert Dauristen Jr.</p>
-                        <!-- /BAR PROGRESS INFO -->
-                    </div>
-                    <!-- /PROGRESS BAR -->
-                </div>
-                <!-- /POLL RESULTS WRAP -->
-            </div>
-            <!-- /POLL WIDGET -->
-        </div>
-        <!-- /WIDGET SIDEBAR -->
-
-        <!-- WIDGET SIDEBAR -->
-        <div class="widget-sidebar">
-            <!-- SECTION TITLE WRAP -->
-            <div class="section-title-wrap blue">
-                <h2 class="section-title medium">Pixel Tags</h2>
-                <div class="section-title-separator"></div>
-            </div>
-            <!-- /SECTION TITLE WRAP -->
-
-            <!-- TAG LIST -->
-            <div class="tag-list">
-                <!-- TAG ITEM -->
-                <a href="search-results.html" class="tag-item">Gaming</a>
-                <!-- /TAG ITEM -->
-
-                <!-- TAG ITEM -->
-                <a href="search-results.html" class="tag-item">Video Reviews</a>
-                <!-- /TAG ITEM -->
-
-                <!-- TAG ITEM -->
-                <a href="search-results.html" class="tag-item">Previews</a>
-                <!-- /TAG ITEM -->
-
-                <!-- TAG ITEM -->
-                <a href="search-results.html" class="tag-item">Movie Reviews</a>
-                <!-- /TAG ITEM -->
-
-                <!-- TAG ITEM -->
-                <a href="search-results.html" class="tag-item">Movie News</a>
-                <!-- /TAG ITEM -->
-
-                <!-- TAG ITEM -->
-                <a href="search-results.html" class="tag-item">Critic</a>
-                <!-- /TAG ITEM -->
-
-                <!-- TAG ITEM -->
-                <a href="search-results.html" class="tag-item">Ratings</a>
-                <!-- /TAG ITEM -->
-
-                <!-- TAG ITEM -->
-                <a href="search-results.html" class="tag-item">Funtendo</a>
-                <!-- /TAG ITEM -->
-            </div>
-            <!-- /TAG LIST -->
-        </div>
-        <!-- /WIDGET SIDEBAR -->
-
-        <!-- WIDGET SIDEBAR -->
-        <div class="widget-sidebar">
-            <!-- SECTION TITLE WRAP -->
-            <div class="section-title-wrap red">
-                <h2 class="section-title medium">Instagram Widget</h2>
-                <div class="section-title-separator"></div>
-            </div>
-            <!-- /SECTION TITLE WRAP -->
-
-            <!-- PHOTO LIST -->
-            <div class="photo-list"></div>
-            <!-- /PHOTO LIST -->
-        </div>
-        <!-- /WIDGET SIDEBAR -->
-
-        <!-- WIDGET SIDEBAR -->
-        <div class="widget-sidebar">
-            <!-- SECTION TITLE WRAP -->
-            <div class="section-title-wrap blue-light">
-                <h2 class="section-title medium">Twitter Widget</h2>
-                <div class="section-title-separator"></div>
-            </div>
-            <!-- /SECTION TITLE WRAP -->
-
-            <!-- TWEETS PREVIEW WIDGET -->
-            <div class="tweets-preview-widget negative">
-            </div>
-            <!-- TWEETS PREVIEW WIDGET -->
         </div>
         <!-- /WIDGET SIDEBAR -->
 

@@ -82,6 +82,6 @@ class CommonHelper
             ->with('user:id,name,email', 'parent:id,name')
             ->orderBy('created_at', 'desc')
             ->take($limit)
-            ->get(['name', 'slug', 'image', 'source', 'description', 'body', 'author', 'parent_id', 'created_at']);
+            ->get(['name', 'slug', 'image', 'source', 'description', 'body', 'author', 'parent_id', 'attr_1 as duration', 'created_at']);
     }
 }
