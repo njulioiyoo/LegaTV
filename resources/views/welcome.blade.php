@@ -303,26 +303,27 @@
                     <!-- NEWS PREVIEW -->
                     <div class="news-preview slider-items">
                         <!-- POST PREVIEW -->
+                        @foreach (App\Helpers\CommonHelper::getLatestProgram(null) as $latestProgram)
                         <div class="post-preview picture big gaming-news">
                             <!-- POST PREVIEW IMG WRAP -->
-                            <a href="post-v1.html">
+                            <a href="{{ route('program.detail', $latestProgram['slug']) }}">
                                 <div class="post-preview-img-wrap">
                                     <!-- POST PREVIEW IMG -->
                                     <figure class="post-preview-img liquid">
-                                        <img src="assets/img/posts/07.jpg" alt="post-07">
+                                        <img src="{{ $latestProgram['image'] }}" alt="post-07">
                                     </figure>
                                     <!-- /POST PREVIEW IMG -->
 
                                     <!-- POST PREVIEW OVERLAY -->
                                     <div class="post-preview-overlay">
                                         <!-- TAG ORNAMENT -->
-                                        <span class="tag-ornament">Gaming News</span>
+                                        <span class="tag-ornament">{{ $latestProgram['parent']->name }}</span>
                                         <!-- /TAG ORNAMENT -->
 
                                         <!-- POST PREVIEW TITLE -->
-                                        <p class="post-preview-title">New expansion pack coming to "Rise of Depredators"</p>
+                                        <p class="post-preview-title">{{ $latestProgram['name'] }}</p>
                                         <!-- POST PREVIEW TEXT -->
-                                        <p class="post-preview-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                                        <p class="post-preview-text">{{ Str::limit($latestProgram['body'], 100) }}</p>
                                     </div>
                                     <!-- /POST PREVIEW OVERLAY -->
 
@@ -333,144 +334,7 @@
                             </a>
                             <!-- /POST PREVIEW IMG WRAP -->
                         </div>
-                        <!-- /POST PREVIEW -->
-
-                        <!-- POST PREVIEW -->
-                        <div class="post-preview picture big game-review">
-                            <!-- POST PREVIEW IMG WRAP -->
-                            <a href="post-v2.html">
-                                <div class="post-preview-img-wrap">
-                                    <!-- POST PREVIEW IMG -->
-                                    <figure class="post-preview-img liquid">
-                                        <img src="assets/img/posts/25.jpg" alt="post-25">
-                                    </figure>
-                                    <!-- /POST PREVIEW IMG -->
-
-                                    <!-- POST PREVIEW OVERLAY -->
-                                    <div class="post-preview-overlay">
-                                        <!-- TAG ORNAMENT -->
-                                        <span class="tag-ornament">Game Reviews</span>
-                                        <!-- /TAG ORNAMENT -->
-
-                                        <!-- POST PREVIEW TITLE -->
-                                        <p class="post-preview-title">"Legend of Kenshi II" is a bit green for now</p>
-                                        <!-- POST PREVIEW TEXT -->
-                                        <p class="post-preview-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                    </div>
-                                    <!-- /POST PREVIEW OVERLAY -->
-
-                                    <!-- REVIEW RATING -->
-                                    <div class="review-rating">
-                                        <div id="content-news-rate-6" class="arc medium"></div>
-                                    </div>
-                                    <!-- /REVIEW RATING -->
-
-                                    <!-- LOADING LINE -->
-                                    <div class="loading-line"></div>
-                                    <!-- /LOADING LINE -->
-                                </div>
-                            </a>
-                            <!-- /POST PREVIEW IMG WRAP -->
-                        </div>
-                        <!-- /POST PREVIEW -->
-
-                        <!-- POST PREVIEW -->
-                        <div class="post-preview picture big geeky-news">
-                            <!-- POST PREVIEW IMG WRAP -->
-                            <a href="post-v4.html">
-                                <div class="post-preview-img-wrap">
-                                    <!-- POST PREVIEW IMG -->
-                                    <figure class="post-preview-img liquid">
-                                        <img src="assets/img/posts/18.jpg" alt="post-18">
-                                    </figure>
-                                    <!-- /POST PREVIEW IMG -->
-
-                                    <!-- POST PREVIEW OVERLAY -->
-                                    <div class="post-preview-overlay">
-                                        <!-- TAG ORNAMENT -->
-                                        <span class="tag-ornament">Geeky News</span>
-                                        <!-- /TAG ORNAMENT -->
-
-                                        <!-- POST PREVIEW TITLE -->
-                                        <p class="post-preview-title">"Ichigo Idol" anime will have a new season in April</p>
-                                        <!-- POST PREVIEW TEXT -->
-                                        <p class="post-preview-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                    </div>
-                                    <!-- /POST PREVIEW OVERLAY -->
-
-                                    <!-- LOADING LINE -->
-                                    <div class="loading-line"></div>
-                                    <!-- /LOADING LINE -->
-                                </div>
-                            </a>
-                            <!-- /POST PREVIEW IMG WRAP -->
-                        </div>
-                        <!-- /POST PREVIEW -->
-
-                        <!-- POST PREVIEW -->
-                        <div class="post-preview picture big gaming-news">
-                            <!-- POST PREVIEW IMG WRAP -->
-                            <a href="post-v1.html">
-                                <div class="post-preview-img-wrap">
-                                    <!-- POST PREVIEW IMG -->
-                                    <figure class="post-preview-img liquid">
-                                        <img src="assets/img/posts/09.jpg" alt="post-09">
-                                    </figure>
-                                    <!-- /POST PREVIEW IMG -->
-
-                                    <!-- POST PREVIEW OVERLAY -->
-                                    <div class="post-preview-overlay">
-                                        <!-- TAG ORNAMENT -->
-                                        <span class="tag-ornament">Gaming News</span>
-                                        <!-- /TAG ORNAMENT -->
-
-                                        <!-- POST PREVIEW TITLE -->
-                                        <p class="post-preview-title">New "Rizen" game is gonna be released in summer 2016</p>
-                                        <!-- POST PREVIEW TEXT -->
-                                        <p class="post-preview-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                    </div>
-                                    <!-- /POST PREVIEW OVERLAY -->
-
-                                    <!-- LOADING LINE -->
-                                    <div class="loading-line"></div>
-                                    <!-- /LOADING LINE -->
-                                </div>
-                            </a>
-                            <!-- /POST PREVIEW IMG WRAP -->
-                        </div>
-                        <!-- /POST PREVIEW -->
-
-                        <!-- POST PREVIEW -->
-                        <div class="post-preview picture big movie-news">
-                            <!-- POST PREVIEW IMG WRAP -->
-                            <a href="post-v3.html">
-                                <div class="post-preview-img-wrap">
-                                    <!-- POST PREVIEW IMG -->
-                                    <figure class="post-preview-img liquid">
-                                        <img src="assets/img/posts/12.jpg" alt="post-12">
-                                    </figure>
-                                    <!-- /POST PREVIEW IMG -->
-
-                                    <!-- POST PREVIEW OVERLAY -->
-                                    <div class="post-preview-overlay">
-                                        <!-- TAG ORNAMENT -->
-                                        <span class="tag-ornament">Movie news</span>
-                                        <!-- /TAG ORNAMENT -->
-
-                                        <!-- POST PREVIEW TITLE -->
-                                        <p class="post-preview-title">We reviewed the "Guardians of the Universe" movie</p>
-                                        <!-- POST PREVIEW TEXT -->
-                                        <p class="post-preview-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                    </div>
-                                    <!-- /POST PREVIEW OVERLAY -->
-
-                                    <!-- LOADING LINE -->
-                                    <div class="loading-line"></div>
-                                    <!-- /LOADING LINE -->
-                                </div>
-                            </a>
-                            <!-- /POST PREVIEW IMG WRAP -->
-                        </div>
+                        @endforeach
                         <!-- /POST PREVIEW -->
                     </div>
                     <!-- /NEWS PREVIEW -->
@@ -478,24 +342,25 @@
                     <!-- NEWS ROSTER -->
                     <div class="news-roster slider-roster">
                         <!-- POST PREVIEW -->
+                        @foreach (App\Helpers\CommonHelper::getLatestProgram(null) as $latestProgram)
                         <div class="post-preview picture short gaming-news">
                             <!-- POST PREVIEW IMG WRAP -->
                             <div class="post-preview-img-wrap">
                                 <!-- POST PREVIEW IMG -->
                                 <figure class="post-preview-img liquid">
-                                    <img src="assets/img/posts/07.jpg" alt="post-07">
+                                    <img src="{{ $latestProgram['image'] }}" alt="post-07">
                                 </figure>
                                 <!-- /POST PREVIEW IMG -->
 
                                 <!-- POST PREVIEW OVERLAY -->
                                 <div class="post-preview-overlay">
                                     <!-- POST PREVIEW TITLE -->
-                                    <p class="post-preview-title">New expansion pack coming to "Rise of Depredators"</p>
+                                    <p class="post-preview-title">{{ $latestProgram['name'] }}</p>
                                 </div>
                                 <!-- /POST PREVIEW OVERLAY -->
 
                                 <!-- TAG ORNAMENT -->
-                                <span class="tag-ornament">Gaming news</span>
+                                <span class="tag-ornament">{{ $latestProgram['parent']->name }}</span>
                                 <!-- /TAG ORNAMENT -->
                             </div>
                             <!-- /POST PREVIEW IMG WRAP -->
@@ -508,138 +373,7 @@
                             <div class="overlay"></div>
                             <!-- /OVERLAY -->
                         </div>
-                        <!-- /POST PREVIEW -->
-
-                        <!-- POST PREVIEW -->
-                        <div class="post-preview picture short game-review">
-                            <!-- POST PREVIEW IMG WRAP -->
-                            <div class="post-preview-img-wrap">
-                                <!-- POST PREVIEW IMG -->
-                                <figure class="post-preview-img liquid">
-                                    <img src="assets/img/posts/25.jpg" alt="post-25">
-                                </figure>
-                                <!-- /POST PREVIEW IMG -->
-
-                                <!-- POST PREVIEW OVERLAY -->
-                                <div class="post-preview-overlay">
-                                    <!-- POST PREVIEW TITLE -->
-                                    <p class="post-preview-title">"Legend of Kenshi II" is a bit green for now</p>
-                                </div>
-                                <!-- /POST PREVIEW OVERLAY -->
-
-                                <!-- TAG ORNAMENT -->
-                                <span class="tag-ornament">Game reviews</span>
-                                <!-- /TAG ORNAMENT -->
-                            </div>
-                            <!-- /POST PREVIEW IMG WRAP -->
-
-                            <!-- LOADING LINE -->
-                            <div class="loading-line"></div>
-                            <!-- /LOADING LINE -->
-
-                            <!-- OVERLAY -->
-                            <div class="overlay"></div>
-                            <!-- /OVERLAY -->
-                        </div>
-                        <!-- /POST PREVIEW -->
-
-                        <!-- POST PREVIEW -->
-                        <div class="post-preview picture short geeky-news">
-                            <!-- POST PREVIEW IMG WRAP -->
-                            <div class="post-preview-img-wrap">
-                                <!-- POST PREVIEW IMG -->
-                                <figure class="post-preview-img liquid">
-                                    <img src="assets/img/posts/18.jpg" alt="post-18">
-                                </figure>
-                                <!-- /POST PREVIEW IMG -->
-
-                                <!-- POST PREVIEW OVERLAY -->
-                                <div class="post-preview-overlay">
-                                    <!-- POST PREVIEW TITLE -->
-                                    <p class="post-preview-title">"Ichigo Idol" anime will have a new season in April</p>
-                                </div>
-                                <!-- /POST PREVIEW OVERLAY -->
-
-                                <!-- TAG ORNAMENT -->
-                                <span class="tag-ornament">Geeky news</span>
-                                <!-- /TAG ORNAMENT -->
-                            </div>
-                            <!-- /POST PREVIEW IMG WRAP -->
-
-                            <!-- LOADING LINE -->
-                            <div class="loading-line"></div>
-                            <!-- /LOADING LINE -->
-
-                            <!-- OVERLAY -->
-                            <div class="overlay"></div>
-                            <!-- /OVERLAY -->
-                        </div>
-                        <!-- /POST PREVIEW -->
-
-                        <!-- POST PREVIEW -->
-                        <div class="post-preview picture short gaming-news">
-                            <!-- POST PREVIEW IMG WRAP -->
-                            <div class="post-preview-img-wrap">
-                                <!-- POST PREVIEW IMG -->
-                                <figure class="post-preview-img liquid">
-                                    <img src="assets/img/posts/09.jpg" alt="post-09">
-                                </figure>
-                                <!-- /POST PREVIEW IMG -->
-
-                                <!-- POST PREVIEW OVERLAY -->
-                                <div class="post-preview-overlay">
-                                    <!-- POST PREVIEW TITLE -->
-                                    <p class="post-preview-title">New "Rizen" game is gonna be released in summer 2016</p>
-                                </div>
-                                <!-- /POST PREVIEW OVERLAY -->
-
-                                <!-- TAG ORNAMENT -->
-                                <span class="tag-ornament">Gaming news</span>
-                                <!-- /TAG ORNAMENT -->
-                            </div>
-                            <!-- /POST PREVIEW IMG WRAP -->
-
-                            <!-- LOADING LINE -->
-                            <div class="loading-line"></div>
-                            <!-- /LOADING LINE -->
-
-                            <!-- OVERLAY -->
-                            <div class="overlay"></div>
-                            <!-- /OVERLAY -->
-                        </div>
-                        <!-- /POST PREVIEW -->
-
-                        <!-- POST PREVIEW -->
-                        <div class="post-preview picture short movie-news">
-                            <!-- POST PREVIEW IMG WRAP -->
-                            <div class="post-preview-img-wrap">
-                                <!-- POST PREVIEW IMG -->
-                                <figure class="post-preview-img liquid">
-                                    <img src="assets/img/posts/12.jpg" alt="post-12">
-                                </figure>
-                                <!-- /POST PREVIEW IMG -->
-
-                                <!-- POST PREVIEW OVERLAY -->
-                                <div class="post-preview-overlay">
-                                    <!-- POST PREVIEW TITLE -->
-                                    <p class="post-preview-title">We reviewed the "Guardians of the Universe" movie</p>
-                                </div>
-                                <!-- /POST PREVIEW OVERLAY -->
-
-                                <!-- TAG ORNAMENT -->
-                                <span class="tag-ornament">Movie news</span>
-                                <!-- /TAG ORNAMENT -->
-                            </div>
-                            <!-- /POST PREVIEW IMG WRAP -->
-
-                            <!-- LOADING LINE -->
-                            <div class="loading-line"></div>
-                            <!-- /LOADING LINE -->
-
-                            <!-- OVERLAY -->
-                            <div class="overlay"></div>
-                            <!-- /OVERLAY -->
-                        </div>
+                        @endforeach
                         <!-- /POST PREVIEW -->
                     </div>
                     <!-- /NEWS ROSTER -->
@@ -1234,166 +968,8 @@
         <!-- LAYOUT ITEM -->
         <div class="layout-item padded own-grid">
             <!-- SECTION TITLE WRAP -->
-            <div class="section-title-wrap violet">
-                <h2 class="section-title medium">Esports News</h2>
-                <div class="section-title-separator"></div>
-
-                <!-- SLIDER CONTROLS -->
-                <div id="esnews-slider1-controls" class="carousel-controls slider-controls violet">
-                    <div class="slider-control control-previous">
-                        <!-- ARROW ICON -->
-                        <svg class="arrow-icon medium">
-                            <use xlink:href="#svg-arrow-medium"></use>
-                        </svg>
-                        <!-- /ARROW ICON -->
-                    </div>
-                    <div class="slider-control control-next">
-                        <!-- ARROW ICON -->
-                        <svg class="arrow-icon medium">
-                            <use xlink:href="#svg-arrow-medium"></use>
-                        </svg>
-                        <!-- /ARROW ICON -->
-                    </div>
-                </div>
-                <!-- /SLIDER CONTROLS -->
-            </div>
-            <!-- /SECTION TITLE WRAP -->
-
-            <!-- CAROUSEL -->
-            <div id="esnews-slider1" class="carousel">
-                <!-- CAROUSEL ITEMS -->
-                <div class="carousel-items">
-                    <!-- POST PREVIEW -->
-                    <div class="post-preview e-sport">
-                        <!-- POST PREVIEW IMG WRAP -->
-                        <a href="esports-post.html">
-                            <div class="post-preview-img-wrap">
-                                <!-- POST PREVIEW IMG -->
-                                <figure class="post-preview-img liquid">
-                                    <img src="assets/img/posts/46.jpg" alt="post-46">
-                                </figure>
-                                <!-- /POST PREVIEW IMG -->
-                            </div>
-                        </a>
-                        <!-- /POST PREVIEW IMG WRAP -->
-
-                        <!-- TAG ORNAMENT -->
-                        <a href="esports-news.html" class="tag-ornament">Esports</a>
-                        <!-- /TAG ORNAMENT -->
-
-                        <!-- POST PREVIEW TITLE -->
-                        <a href="esports-post.html" class="post-preview-title">Sarah Rodgers has broken the Legends world record!</a>
-                        <!-- POST AUTHOR INFO -->
-                        <div class="post-author-info-wrap">
-                            <p class="post-author-info small light">By <a href="search-results.html" class="post-author">Vellatrix</a><span class="separator">|</span>December 15th, 2018</p>
-                        </div>
-                        <!-- /POST AUTHOR INFO -->
-                        <!-- POST PREVIEW TEXT -->
-                        <p class="post-preview-text">Lorem ipsum dolor sit amet, consectetur bere adipisicing elit, sed do eiusmod tempor lorem incididunt ut labore et dolore magna.</p>
-                    </div>
-                    <!-- /POST PREVIEW -->
-
-                    <!-- POST PREVIEW -->
-                    <div class="post-preview e-sport">
-                        <!-- POST PREVIEW IMG WRAP -->
-                        <a href="esports-post.html">
-                            <div class="post-preview-img-wrap">
-                                <!-- POST PREVIEW IMG -->
-                                <figure class="post-preview-img liquid">
-                                    <img src="assets/img/posts/41.jpg" alt="post-41">
-                                </figure>
-                                <!-- /POST PREVIEW IMG -->
-                            </div>
-                        </a>
-                        <!-- /POST PREVIEW IMG WRAP -->
-
-                        <!-- TAG ORNAMENT -->
-                        <a href="esports-news.html" class="tag-ornament">Esports</a>
-                        <!-- /TAG ORNAMENT -->
-
-                        <!-- POST PREVIEW TITLE -->
-                        <a href="esports-post.html" class="post-preview-title">The Xenowatch semifinals were truly incredible</a>
-                        <!-- POST AUTHOR INFO -->
-                        <div class="post-author-info-wrap">
-                            <p class="post-author-info small light">By <a href="search-results.html" class="post-author">Faye V.</a><span class="separator">|</span>December 15th, 2018</p>
-                        </div>
-                        <!-- /POST AUTHOR INFO -->
-                        <!-- POST PREVIEW TEXT -->
-                        <p class="post-preview-text">Lorem ipsum dolor sit amet, consectetur bere adipisicing elit, sed do eiusmod tempor lorem incididunt ut labore et dolore magna.</p>
-                    </div>
-                    <!-- /POST PREVIEW -->
-
-                    <!-- POST PREVIEW -->
-                    <div class="post-preview e-sport">
-                        <!-- POST PREVIEW IMG WRAP -->
-                        <a href="esports-post.html">
-                            <div class="post-preview-img-wrap">
-                                <!-- POST PREVIEW IMG -->
-                                <figure class="post-preview-img liquid">
-                                    <img src="assets/img/posts/40.jpg" alt="post-40">
-                                </figure>
-                                <!-- /POST PREVIEW IMG -->
-                            </div>
-                        </a>
-                        <!-- /POST PREVIEW IMG WRAP -->
-
-                        <!-- TAG ORNAMENT -->
-                        <a href="esports-news.html" class="tag-ornament">Esports</a>
-                        <!-- /TAG ORNAMENT -->
-
-                        <!-- POST PREVIEW TITLE -->
-                        <a href="esports-post.html" class="post-preview-title">The Siberian Tigers arrived at New York for the finals</a>
-                        <!-- POST AUTHOR INFO -->
-                        <div class="post-author-info-wrap">
-                            <p class="post-author-info small light">By <a href="search-results.html" class="post-author">Vellatrix</a><span class="separator">|</span>December 15th, 2018</p>
-                        </div>
-                        <!-- /POST AUTHOR INFO -->
-                        <!-- POST PREVIEW TEXT -->
-                        <p class="post-preview-text">Lorem ipsum dolor sit amet, consectetur bere adipisicing elit, sed do eiusmod tempor lorem incididunt ut labore et dolore magna.</p>
-                    </div>
-                    <!-- /POST PREVIEW -->
-
-                    <!-- POST PREVIEW -->
-                    <div class="post-preview e-sport">
-                        <!-- POST PREVIEW IMG WRAP -->
-                        <a href="esports-post.html">
-                            <div class="post-preview-img-wrap">
-                                <!-- POST PREVIEW IMG -->
-                                <figure class="post-preview-img liquid">
-                                    <img src="assets/img/posts/45.jpg" alt="post-45">
-                                </figure>
-                                <!-- /POST PREVIEW IMG -->
-                            </div>
-                        </a>
-                        <!-- /POST PREVIEW IMG WRAP -->
-
-                        <!-- TAG ORNAMENT -->
-                        <a href="esports-news.html" class="tag-ornament">Esports</a>
-                        <!-- /TAG ORNAMENT -->
-
-                        <!-- POST PREVIEW TITLE -->
-                        <a href="esports-post.html" class="post-preview-title">Thomas Howlett joins the Wolves Xenowatch esports...</a>
-                        <!-- POST AUTHOR INFO -->
-                        <div class="post-author-info-wrap">
-                            <p class="post-author-info small light">By <a href="search-results.html" class="post-author">Morgana</a><span class="separator">|</span>December 15th, 2018</p>
-                        </div>
-                        <!-- /POST AUTHOR INFO -->
-                        <!-- POST PREVIEW TEXT -->
-                        <p class="post-preview-text">Lorem ipsum dolor sit amet, consectetur bere adipisicing elit, sed do eiusmod tempor lorem incididunt ut labore et dolore magna.</p>
-                    </div>
-                    <!-- /POST PREVIEW -->
-                </div>
-                <!-- /CAROUSEL ITEMS -->
-            </div>
-            <!-- /CAROUSEL -->
-        </div>
-        <!-- /LAYOUT ITEM -->
-
-        <!-- LAYOUT ITEM -->
-        <div class="layout-item padded own-grid">
-            <!-- SECTION TITLE WRAP -->
             <div class="section-title-wrap cyan">
-                <h2 class="section-title medium">Featured Videos</h2>
+                <h2 class="section-title medium">Featured Program</h2>
                 <div class="section-title-separator"></div>
 
                 <!-- SLIDER CONTROLS -->
@@ -1422,13 +998,13 @@
                 <!-- CAROUSEL ITEMS -->
                 <div class="carousel-items">
                     <!-- POST PREVIEW -->
-                    @foreach (App\Helpers\CommonHelper::getLatestProgram(null) as $latestProgram)
+                    @foreach (App\Helpers\CommonHelper::getFeaturedProgram(null) as $featuredProgram)
                     <div class="post-preview video large no-hover">
                         <!-- POST PREVIEW IMG WRAP -->
                         <div class="post-preview-img-wrap">
                             <!-- POST PREVIEW IMG -->
                             <figure class="post-preview-img liquid">
-                                <img src="{{ $latestProgram['image'] }}" alt="post-03">
+                                <img src="{{ $featuredProgram['image'] }}" alt="post-03">
                             </figure>
                             <!-- /POST PREVIEW IMG -->
 
@@ -1447,17 +1023,20 @@
                                 <!-- POST PREVIEW OVERLAY INFO -->
                                 <div class="post-preview-overlay-info">
                                     <!-- POST PREVIEW TITLE -->
-                                    <p class="post-preview-title">{{ $latestProgram['name'] }}</p>
+                                    <p class="post-preview-title">{{ $featuredProgram['name'] }}</p>
                                     <!-- POST PREVIEW TEXT -->
-                                    <p class="post-preview-text">{{ $latestProgram['duration'] }}</p>
+                                    <p class="post-preview-text">{{ $featuredProgram['duration'] }}</p>
                                 </div>
                                 <!-- /POST PREVIEW OVERLAY INFO -->
                             </div>
                             <!-- /POST PREVIEW OVERLAY -->
-
+                            @php
+                                preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $featuredProgram['source'], $matches);
+                                $youtubeId = $matches[1];
+                            @endphp
                             <!-- POST PREVIEW VIDEO -->
                             <div class="post-preview-video-wrap">
-                                <iframe class="post-preview-video" src="https://www.youtube.com/embed/{{ $latestProgram['source'] }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe class="post-preview-video" src="https://www.youtube.com/embed/{{ $youtubeId }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             <!-- /POST PREVIEW VIDEO -->
                         </div>

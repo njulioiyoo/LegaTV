@@ -40,17 +40,24 @@ class ProgramEditLayout extends Rows
                 ->help('Specify a short descriptive title for this program.'),
 
             Group::make([
-                Switcher::make('program.active')
+                Switcher::make('program.is_featured')
                     ->sendTrueOrFalse()
                     ->align(TD::ALIGN_RIGHT)
                     ->help('Slide the switch to on to change it to true.')
-                    ->title('Status'),
+                    ->title('Featured Program'),
 
                 Switcher::make('program.is_shared_to_live')
                     ->sendTrueOrFalse()
                     ->align(TD::ALIGN_LEFT)
                     ->help('Slide the switch to on to change it to true.')
                     ->title('Share to Live TV'),
+            ]),
+            Group::make([
+                Switcher::make('program.active')
+                    ->sendTrueOrFalse()
+                    ->align(TD::ALIGN_RIGHT)
+                    ->help('Slide the switch to on to change it to true.')
+                    ->title('Status'),
             ]),
         ];
     }

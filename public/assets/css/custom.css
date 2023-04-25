@@ -87,3 +87,9 @@
     top: 45% !important;
     left: 45% !important;
 }
+
+.live-news-widget .live-news-widget-text {
+    color: #8b8b8b;
+    font-size: 1em !important;
+    line-height: 40px;
+}

@@ -111,6 +111,11 @@ class ProgramScreen extends Screen
                     ->sort()
                     ->render(fn (Program $program) => $program['parent']->name),
 
+                TD::make('is_shared_to_live', __('Featured Program'))
+                    ->sort()
+                    ->render(fn (Program $program) => $program->is_featured ? '<i class="text-success">●</i> True'
+                        : '<i class="text-danger">●</i> False'),
+
                 TD::make('is_shared_to_live', __('Shared to Live TV'))
                     ->sort()
                     ->render(fn (Program $program) => $program->is_shared_to_live ? '<i class="text-success">●</i> True'
@@ -144,17 +149,24 @@ class ProgramScreen extends Screen
                     ->help('Specify a short descriptive title for this program.'),
 
                 Group::make([
-                    Switcher::make('program.active')
+                    Switcher::make('program.is_featured')
                         ->sendTrueOrFalse()
                         ->align(TD::ALIGN_RIGHT)
                         ->help('Slide the switch to on to change it to true.')
-                        ->title('Status'),
+                        ->title('Featured Program'),
 
                     Switcher::make('program.is_shared_to_live')
                         ->sendTrueOrFalse()
                         ->align(TD::ALIGN_LEFT)
                         ->help('Slide the switch to on to change it to true.')
                         ->title('Share to Live TV'),
+                ]),
+                Group::make([
+                    Switcher::make('program.active')
+                        ->sendTrueOrFalse()
+                        ->align(TD::ALIGN_RIGHT)
+                        ->help('Slide the switch to on to change it to true.')
+                        ->title('Status'),
                 ]),
             ]))
                 ->title('Create Program')
@@ -194,8 +206,12 @@ class ProgramScreen extends Screen
         $youtube = new Google_Service_YouTube($client);
 
         $data = $request->input('program');
+
+        preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $data['source'], $matches);
+        $youtubeId = $matches[1];
+
         $videoResponse = $youtube->videos->listVideos('snippet, contentDetails', array(
-            'id' => $data['source']
+            'id' => $youtubeId
         ));
         $video = $videoResponse[0];
         $duration = $video->getContentDetails()->getDuration(); //durasi dalam format ISO 8601
@@ -216,10 +232,10 @@ class ProgramScreen extends Screen
             'body' => $video['snippet']['description'],
             'attr_1' => $formattedDuration,
             'image' => $video['snippet']['thumbnails']['maxres']['url'],
+            'is_featured' => $data['is_featured'],
             'is_shared_to_live' => $data['is_shared_to_live'],
             'active' => $data['active'],
         );
-
 
         $program->fill($create)->save();
 

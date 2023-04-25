@@ -73,7 +73,7 @@ class CommonHelper
         return Partnership::where('active', 1)->latest()->get(['image']);
     }
 
-    public static function getLatestProgram($slug, $limit = 3)
+    public static function getLatestProgram($slug, $limit = 5)
     {
         return Program::where([
             ['active', '=', 1],
@@ -82,6 +82,17 @@ class CommonHelper
             ->with('user:id,name,email', 'parent:id,name')
             ->orderBy('created_at', 'desc')
             ->take($limit)
+            ->get(['name', 'slug', 'image', 'source', 'description', 'body', 'author', 'parent_id', 'attr_1 as duration', 'created_at']);
+    }
+
+    public static function getFeaturedProgram()
+    {
+        return Program::where([
+            ['active', '=', 1],
+            ['is_featured', '=', 1]
+        ])
+            ->with('user:id,name,email', 'parent:id,name')
+            ->orderBy('created_at', 'desc')
             ->get(['name', 'slug', 'image', 'source', 'description', 'body', 'author', 'parent_id', 'attr_1 as duration', 'created_at']);
     }
 }
