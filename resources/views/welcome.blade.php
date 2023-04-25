@@ -966,6 +966,7 @@
         <!-- /LAYOUT ITEM -->
 
         <!-- LAYOUT ITEM -->
+        @if(count(App\Helpers\CommonHelper::getFeaturedProgram(null)) > 0)
         <div class="layout-item padded own-grid">
             <!-- SECTION TITLE WRAP -->
             <div class="section-title-wrap cyan">
@@ -1049,6 +1050,7 @@
             </div>
             <!-- /CAROUSEL -->
         </div>
+        @endif
         <!-- /LAYOUT ITEM -->
     </div>
     <!-- /LAYOUT BODY -->
