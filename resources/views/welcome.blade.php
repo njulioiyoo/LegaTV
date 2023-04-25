@@ -1079,6 +1079,7 @@
         <!-- /WIDGET SIDEBAR -->
 
         <!-- WIDGET SIDEBAR -->
+        @if(count(App\Helpers\CommonHelper::getPopularNews(null)) > 0)
         <div class="widget-sidebar">
             <!-- SECTION TITLE WRAP -->
             <div class="section-title-wrap blue">
@@ -1117,9 +1118,11 @@
             </div>
             <!-- /POST PREVIEW SHOWCASE -->
         </div>
+        @endif
         <!-- /WIDGET SIDEBAR -->
 
         <!-- WIDGET SIDEBAR -->
+        @if(count(App\Helpers\CommonHelper::getLatestNews(null)) > 0)
         <div class="widget-sidebar">
             <!-- SECTION TITLE WRAP -->
             <div class="section-title-wrap red">
@@ -1158,6 +1161,7 @@
             </div>
             <!-- /POST PREVIEW SHOWCASE -->
         </div>
+        @endif
         <!-- /WIDGET SIDEBAR -->
 
         <!-- WIDGET SIDEBAR -->
