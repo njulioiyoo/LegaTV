@@ -110,3 +110,12 @@
 .live-news-widget .live-news-widget-stairs.red .live-news-widget-stair {
     background-color: #0a387c !important;
 }
+
+.live-news-widget .live-news-widget-stairs.blue .live-news-widget-stair {
+    background-color: #cb5201 !important;
+}
+
+.live-news-widget-wrap:after {
+    background-color: #cb5201 !important;
+}
+
