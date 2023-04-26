@@ -60,7 +60,7 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
             <!-- SOCIAL LINKS -->
             <div class="social-links">
                 <!-- BUBBLE ORNAMENT -->
-                <a href="#" class="bubble-ornament fb">
+                <a href="{{ $configurations['facebook'] ?? '' }}" target="_blank" class="bubble-ornament fb">
                     <!-- FACEBOOK ICON -->
                     <svg class="facebook-icon">
                         <use xlink:href="#svg-facebook"></use>
@@ -70,7 +70,7 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
                 <!-- /BUBBLE ORNAMENT -->
 
                 <!-- BUBBLE ORNAMENT -->
-                <a href="#" class="bubble-ornament twt">
+                <a href="{{ $configurations['twitter'] ?? '' }}" target="_blank" class="bubble-ornament twt">
                     <!-- TWITTER ICON -->
                     <svg class="twitter-icon">
                         <use xlink:href="#svg-twitter"></use>
@@ -80,22 +80,12 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
                 <!-- /BUBBLE ORNAMENT -->
 
                 <!-- BUBBLE ORNAMENT -->
-                <a href="#" class="bubble-ornament insta">
+                <a href="{{ $configurations['instagram'] ?? '' }}" target="_blank" class="bubble-ornament insta">
                     <!-- INSTAGRAM ICON -->
                     <svg class="instagram-icon">
                         <use xlink:href="#svg-instagram"></use>
                     </svg>
                     <!-- /INSTAGRAM ICON -->
-                </a>
-                <!-- /BUBBLE ORNAMENT -->
-
-                <!-- BUBBLE ORNAMENT -->
-                <a href="#" class="bubble-ornament twitch">
-                    <!-- TWITCH ICON -->
-                    <svg class="twitch-icon">
-                        <use xlink:href="#svg-twitch"></use>
-                    </svg>
-                    <!-- /TWITCH ICON -->
                 </a>
                 <!-- /BUBBLE ORNAMENT -->
             </div>
