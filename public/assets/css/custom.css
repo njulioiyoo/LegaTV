@@ -93,3 +93,11 @@
     font-size: 1em !important;
     line-height: 40px;
 }
+
+.banner {
+    padding: 50px 0 90px !important;
+}
+
+.banner-wrap.geeky-news {
+    height: 150px !important;
+}
