@@ -149,7 +149,7 @@ class ManuscriptEditScreen extends Screen
                         ->sendTrueOrFalse()
                         ->align(TD::ALIGN_RIGHT)
                         ->help('Slide the switch to on to change it to true.')
-                        ->title('Highlight News'),
+                        ->title('Highlight Article'),
 
                     Switcher::make('article.active')
                         ->sendTrueOrFalse()
