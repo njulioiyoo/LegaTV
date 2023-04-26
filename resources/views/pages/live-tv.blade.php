@@ -2,10 +2,10 @@
 
 @push('css')
 <style>
-    body {
+    /* body {
         margin: 0;
         padding: 0;
-    }
+    } */
 
     video {
         width: 100%;
@@ -109,7 +109,7 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
                         $postHtml .= '<!-- /POST PREVIEW IMG WRAP -->';
 
                         $postHtml .= '<!-- POST PREVIEW TITLE -->';
-                        $postHtml .= '<a href="' . route('program.detail', $p['slug']) . '" class="post-preview-title">' . $p['name'] . '</a>';
+                        $postHtml .= '<a href="' . route('program.detail', $p['slug']) . '" class="post-preview-title">' . Str::limit($p['name'], 20) . '</a>';
 
                         $postHtml .= '<!-- POST AUTHOR INFO -->';
                         $postHtml .= '<div class="post-author-info-wrap">';

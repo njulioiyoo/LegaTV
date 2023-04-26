@@ -30,7 +30,7 @@
 }
 
 .banner-slider {
-    height: 625px !important;
+    height: 560px !important;
 }
 
 .mobile-menu-wrap .logo-img {
@@ -100,4 +100,13 @@
 
 .banner-wrap.geeky-news {
     height: 150px !important;
+}
+
+.live-news-widget-wrap:before {
+    left: 0;
+    background-color: #0a387c !important;
+}
+
+.live-news-widget .live-news-widget-stairs.red .live-news-widget-stair {
+    background-color: #0a387c !important;
 }
