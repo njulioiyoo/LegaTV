@@ -112,7 +112,7 @@ class PageController extends Controller
             $query->select('id', 'name', 'email');
         }, 'parent' => function ($query) {
             $query->select('id', 'name');
-        }])->where('active', 1)->orderBy('created_at', 'desc')->paginate(10);
+        }])->where('active', 1)->orderBy('created_at', 'desc')->paginate(9);
 
         // Get popular news
         $popularProgram = CommonHelper::getPopularProgram(null);
@@ -160,7 +160,7 @@ class PageController extends Controller
             $query->select('id', 'name', 'email');
         }, 'parent' => function ($query) {
             $query->select('id', 'name');
-        }])->where('active', 1)->orderBy('created_at', 'desc')->paginate(10);
+        }])->where('active', 1)->orderBy('created_at', 'desc')->paginate(9);
 
         return view('pages.article.index', compact('article'));
     }
@@ -227,7 +227,7 @@ class PageController extends Controller
             }])->where([
                 ['active', '=', 1],
                 ['body', 'LIKE', '%' . $querySearch . '%']
-            ])->orderBy('created_at', 'desc')->paginate(10);
+            ])->orderBy('created_at', 'desc')->paginate(9);
         }
 
         return view('pages.search', compact('search'));
