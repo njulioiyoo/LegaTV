@@ -112,7 +112,7 @@ class PageController extends Controller
             $query->select('id', 'name', 'email');
         }, 'parent' => function ($query) {
             $query->select('id', 'name');
-        }])->where('active', 1)->orderBy('created_at', 'desc')->paginate();
+        }])->where('active', 1)->orderBy('created_at', 'desc')->paginate(10);
 
         // Get popular news
         $popularProgram = CommonHelper::getPopularProgram(null);
@@ -160,7 +160,7 @@ class PageController extends Controller
             $query->select('id', 'name', 'email');
         }, 'parent' => function ($query) {
             $query->select('id', 'name');
-        }])->where('active', 1)->orderBy('created_at', 'desc')->paginate();
+        }])->where('active', 1)->orderBy('created_at', 'desc')->paginate(10);
 
         return view('pages.article.index', compact('article'));
     }
@@ -201,7 +201,9 @@ class PageController extends Controller
 
     public function search(Request $request)
     {
-        if(empty($request->input('key'))){abort(404);}
+        if (empty($request->input('key'))) {
+            abort(404);
+        }
         $querySearch = str_replace(
             [
                 '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
