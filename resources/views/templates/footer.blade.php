@@ -120,7 +120,7 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
 
                 <!-- CONTACT INFO PREVIEW -->
                 <div class="contact-info-preview negative">
-                    <p class="contact-info-preview-text">Lorem ipsum dolor sit amet, consectetur dasede do eiusmod <span class="highlighted">tempor</span> unt ut labore et dolore mag lere adveniam, quis rud citation laboris.</p>
+                    <p class="contact-info-preview-text">{{ $configurations['website_contact_info'] ?? '' }}</p>
                     <!-- CONTACT INFO PREVIEW SIGN -->
                     <div class="contact-info-preview-sign">
                         <!-- BUBBLE ORNAMENT -->
