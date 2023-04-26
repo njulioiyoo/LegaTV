@@ -26,6 +26,7 @@ return new class extends Migration
             $table->bigInteger('parent_id')->nullable();
             $table->bigInteger('viewed')->nullable();
             $table->boolean('is_featured')->nullable();
+            $table->boolean('is_highlight')->nullable();
             $table->boolean('is_shared_to_live')->nullable();
             $table->string('attr_1')->nullable();
             $table->bigInteger('active')->nullable();
