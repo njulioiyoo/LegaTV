@@ -2,6 +2,7 @@
 
 @section('content')
 <!-- BANNER SLIDER -->
+@if(count($content) > 0)
 <div id="banner-slider-2" class="banner-slider v2">
     <!-- SLIDER ITEMS -->
     <div class="slider-items">
@@ -103,6 +104,7 @@
     </div>
     <!-- /BANNER SLIDER PREVIEW WRAP -->
 </div>
+@endif
 <!-- /BANNER SLIDER -->
 
 @include('templates.elements.live-news')
