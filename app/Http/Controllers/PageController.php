@@ -58,7 +58,7 @@ class PageController extends Controller
             $query->select('id', 'name', 'email');
         }, 'parent' => function ($query) {
             $query->select('id', 'name');
-        }])->where('active', 1)->orderBy('created_at', 'desc')->paginate();
+        }])->where('active', 1)->orderBy('created_at', 'desc')->paginate(6);
 
         // Get popular news
         $popularNews = CommonHelper::getPopularNews(null);
@@ -160,7 +160,7 @@ class PageController extends Controller
             $query->select('id', 'name', 'email');
         }, 'parent' => function ($query) {
             $query->select('id', 'name');
-        }])->where('active', 1)->orderBy('created_at', 'desc')->paginate(9);
+        }])->where('active', 1)->orderBy('created_at', 'desc')->paginate(3);
 
         return view('pages.article.index', compact('article'));
     }
