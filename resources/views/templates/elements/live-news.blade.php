@@ -44,7 +44,7 @@ $liveNews = App\Helpers\CommonHelper::getLiveNews();
         @foreach ($liveNews as $item)
         <div id="my-marquee">
             <marquee behavior="scroll" direction="left" class="live-news-widget-text-wrap">
-                <p class="live-news-widget-text"><a href="{{ route('news.detail', $item['slug']) }}" style="color: #fff">{{ $item['name'] }}:</a> <span>{{ $item['description'] }}</span></p>
+                <p class="live-news-widget-text"><a href="{{ route('news.detail', $item['slug']) }}" style="color: #fff">{{ $item['name'] }}:</a> <span>{!! Str::limit($item['body'], 200) !!}</span></p>
             </marquee>
         </div>
         @endforeach

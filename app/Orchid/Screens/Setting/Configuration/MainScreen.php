@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Orchid\Screens\Configuration;
+namespace App\Orchid\Screens\Setting\Configuration;
 
-use App\Models\Configuration;
 use Orchid\Screen\Action;
-use Orchid\Screen\Fields\Switcher;
-use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
-use Orchid\Support\Facades\Layout;
-use Orchid\Screen\Fields\Cropper;
-use Orchid\Screen\Actions\Button;
 use Illuminate\Http\Request;
-use Orchid\Support\Facades\Toast;
+use App\Models\Configuration;
+use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Quill;
+use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Fields\Cropper;
+use Orchid\Support\Facades\Toast;
+use Orchid\Screen\Fields\TextArea;
+use Orchid\Support\Facades\Layout;
+use Orchid\Screen\Fields\Switcher;
 
 class MainScreen extends Screen
 {

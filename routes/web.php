@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['as' => 'home', 'uses' => 'App\Http\Controllers\PageController@home']);
 
 Route::group(['prefix' => 'news'], function () {
     Route::get('/', ['as' => 'news', 'uses' => 'App\Http\Controllers\PageController@news']);
@@ -25,6 +23,11 @@ Route::group(['prefix' => 'news'], function () {
 Route::group(['prefix' => 'program'], function () {
     Route::get('/', ['as' => 'program', 'uses' => 'App\Http\Controllers\PageController@program']);
     Route::get('/{slug}', ['as' => 'program.detail', 'uses' => 'App\Http\Controllers\PageController@programDetail']);
+});
+
+Route::group(['prefix' => 'article'], function () {
+    Route::get('/', ['as' => 'article', 'uses' => 'App\Http\Controllers\PageController@article']);
+    Route::get('/{slug}', ['as' => 'article.detail', 'uses' => 'App\Http\Controllers\PageController@articleDetail']);
 });
 
 Route::get('/live', ['as' => 'livetv', 'uses' => 'App\Http\Controllers\PageController@liveTV']);

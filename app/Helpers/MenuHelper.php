@@ -21,7 +21,7 @@ class MenuHelper
             ],
             [
                 'name' => 'Article',
-                'url' => '/live',
+                'url' => '/article',
             ],
             [
                 'name' => 'Live TV',

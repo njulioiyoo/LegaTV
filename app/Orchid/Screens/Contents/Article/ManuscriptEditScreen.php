@@ -2,45 +2,47 @@
 
 declare(strict_types=1);
 
-namespace App\Orchid\Screens\News;
+namespace App\Orchid\Screens\Contents\Article;
 
-use App\Models\News;
-use App\Models\ContentType;
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\Article;
 use Orchid\Screen\Action;
-use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
-use Orchid\Screen\Fields\TextArea;
-use Orchid\Support\Facades\Layout;
-use Orchid\Support\Facades\Toast;
-use Orchid\Screen\Fields\Relation;
-use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Cropper;
-use Orchid\Screen\Fields\Quill;
+use App\Models\ContentType;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Quill;
+use Orchid\Screen\Actions\Button;
+use Orchid\Support\Facades\Toast;
+use Orchid\Screen\Fields\Cropper;
+use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Fields\Switcher;
+use Orchid\Screen\Fields\TextArea;
+use Orchid\Screen\Fields\Relation;
+use Orchid\Screen\Fields\Group;
+use Orchid\Screen\TD;
 
-class EditScreen extends Screen
+class ManuscriptEditScreen extends Screen
 {
     /**
-     * @var News
+     * @var Article
      */
-    public $news;
+    public $article;
 
     /**
      * Fetch data to be displayed on the screen.
      *
-     * @param News $news
+     * @param Article $article
      *
      * @return array
      */
-    public function query(News $news): array
+    public function query(Article $article): array
     {
-        $news->load('attachment');
+        $article->load('attachment');
 
         return [
-            'news' => $news
+            'article' => $article
         ];
     }
 
@@ -51,7 +53,7 @@ class EditScreen extends Screen
      */
     public function name(): ?string
     {
-        return $this->news->exists ? 'Edit News' : 'Creating a New News';
+        return $this->article->exists ? 'Edit Article' : 'Creating a New Article';
     }
 
     /**
@@ -61,7 +63,7 @@ class EditScreen extends Screen
      */
     public function description(): ?string
     {
-        return "Blog news";
+        return "Blog Article";
     }
 
     /**
@@ -70,7 +72,7 @@ class EditScreen extends Screen
     public function permission(): ?iterable
     {
         return [
-            'platform.systems.news',
+            'platform.systems.articles',
         ];
     }
 
@@ -84,9 +86,9 @@ class EditScreen extends Screen
         return [
             Button::make(__('Remove'))
                 ->icon('trash')
-                ->confirm(__('Once the news is deleted, all of its resources and data will be permanently deleted. Before deleting your news, please download any data or information that you wish to retain.'))
+                ->confirm(__('Once the article is deleted, all of its resources and data will be permanently deleted. Before deleting your article, please download any data or information that you wish to retain.'))
                 ->method('remove')
-                ->canSee($this->news->exists),
+                ->canSee($this->article->exists),
 
             Button::make(__('Save'))
                 ->icon('check')
@@ -102,41 +104,33 @@ class EditScreen extends Screen
         return [
 
             Layout::rows([
-                Relation::make('news.author')
+                Relation::make('article.author')
                     ->title('Author')
                     ->required()
                     ->horizontal()
                     ->fromModel(User::class, 'name'),
 
-                Relation::make('news.parent_id')
+                Relation::make('article.parent_id')
                     ->title('Content Categories')
                     ->required()
                     ->horizontal()
                     ->fromModel(ContentType::class, 'name')->applyScope('content'),
 
-                Input::make('news.name')
-                    ->title('Title')
+                Input::make('article.name')
+                    ->title('Name')
                     ->horizontal()
                     ->required()
-                    ->placeholder('Attractive but mysterious title')
-                    ->help('Specify a short descriptive title for this news.'),
+                    ->placeholder('Attractive but mysterious name')
+                    ->help('Specify a short descriptive name for this article.'),
 
-                Cropper::make('news.image')
+                Cropper::make('article.image')
                     ->title('Image')
-                    ->required()
                     ->width(1000)
                     ->height(476)
                     ->keepAspectRatio()
                     ->horizontal(),
 
-                Input::make('news.source')
-                    ->title('URLs')
-                    ->horizontal()
-                    ->type('url')
-                    ->placeholder('Share url video on your news')
-                    ->help('Specify a short descriptive title for this news.'),
-
-                TextArea::make('news.description')
+                TextArea::make('article.description')
                     ->title('Description')
                     ->horizontal()
                     ->required()
@@ -144,57 +138,62 @@ class EditScreen extends Screen
                     ->maxlength(200)
                     ->placeholder('Brief description for preview'),
 
-                Quill::make('news.body')
+                Quill::make('article.body')
                     ->horizontal()
                     ->required()
                     ->title('Main text'),
 
-                Switcher::make('news.active')
-                    ->sendTrueOrFalse()
-                    ->title('Status')
-                    ->horizontal(),
 
-                Switcher::make('news.is_shared_to_live')
-                    ->sendTrueOrFalse()
-                    ->title('Share to Live News')
-                    ->horizontal(),
+                Group::make([
+                    Switcher::make('article.is_highlight')
+                        ->sendTrueOrFalse()
+                        ->align(TD::ALIGN_RIGHT)
+                        ->help('Slide the switch to on to change it to true.')
+                        ->title('Highlight News'),
+
+                    Switcher::make('article.active')
+                        ->sendTrueOrFalse()
+                        ->align(TD::ALIGN_RIGHT)
+                        ->help('Slide the switch to on to change it to true.')
+                        ->title('Status'),
+                ]),
             ])
 
         ];
     }
 
     /**
-     * @param News    $news
+     * @param Article    $article
      * @param Request $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function save(News $news, Request $request)
+    public function save(Article $article, Request $request)
     {
-        $data = $request->get('news');
+        $data = $request->get('article');
         $data['slug']   = Str::slug($data['name']);
         $data['image']  = url('public' . $data['image']);
 
-        $news->fill($data)->save();
+        $article->fill($data)->save();
 
-        Toast::info(__('News was saved.'));
+        Toast::info(__('Article was saved.'));
 
-        return redirect()->route('platform.systems.news');
+        return redirect()->route('platform.systems.articles');
     }
 
     /**
-     * @param News $news
+     * @param Article $article
      *
      * @throws \Exception
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function remove(News $news)
+    public function remove(Article $article)
     {
-        $news->delete();
+        $article->delete();
 
-        Toast::info(__('News was removed'));
+        Toast::info(__('Article was removed'));
 
-        return redirect()->route('platform.systems.news');
+        return redirect()->route('platform.systems.articles');
     }
 }

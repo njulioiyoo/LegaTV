@@ -11,4 +11,14 @@ class Content extends Model
 
     protected $table   = 'contents';
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'author');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(ContentType::class, 'parent_id');
+    }
 }

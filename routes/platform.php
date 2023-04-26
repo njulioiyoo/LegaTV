@@ -9,22 +9,25 @@ use App\Orchid\Screens\Examples\ExampleFieldsScreen;
 use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
+
 use App\Orchid\Screens\PlatformScreen;
+
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 
-use App\Orchid\Screens\Configuration\MainScreen;
+use App\Orchid\Screens\Setting\Configuration\MainScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 
+use App\Orchid\Screens\Contents\Article\ManuscriptListScreen;
+use App\Orchid\Screens\Contents\Article\ManuscriptEditScreen;
+
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
-use App\Orchid\Screens\News\ListScreen;
-use App\Orchid\Screens\News\EditScreen;
-
-use App\Orchid\Screens\Program\ProgramScreen;
+use App\Orchid\Screens\Contents\News\NewsScreen;
+use App\Orchid\Screens\Vod\Program\ProgramScreen;
 
 use App\Orchid\Screens\MasterData\ContentType\ContentTypeScreen;
 use App\Orchid\Screens\MasterData\Partnership\PartnershipEditScreen;
@@ -133,14 +136,14 @@ Route::screen('partnership/create', PartnershipEditScreen::class)
         ->parent('platform.systems.partnerships')
         ->push(__('Create'), route('platform.systems.partnerships.create')));
 
-// Platform > System >Master Data > Partnership > Edit
+// Platform > System > Master Data > Partnership > Edit
 Route::screen('partnership/{partnership}/edit', PartnershipEditScreen::class)
     ->name('platform.systems.partnerships.edit')
     ->breadcrumbs(fn (Trail $trail, $partnership) => $trail
         ->parent('platform.systems.partnerships')
         ->push($partnership->name, route('platform.systems.partnerships.edit', $partnership)));
 
-// Platform > System > Program
+// Platform > System > Video On Demands > Program
 Route::screen('program', ProgramScreen::class)
     ->name('platform.systems.program')
     ->breadcrumbs(function (Trail $trail) {
@@ -149,28 +152,37 @@ Route::screen('program', ProgramScreen::class)
             ->push('Program');
     });
 
-// Platform > System > News
-Route::screen('news', ListScreen::class)
+// Platform > System > Contents > News
+Route::screen('news', NewsScreen::class)
     ->name('platform.systems.news')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push('News');
+    });
+
+// Platform > System > Contents > Articles
+Route::screen('article', ManuscriptListScreen::class)
+    ->name('platform.systems.articles')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
-        ->push(__('News'), route('platform.systems.news')));
+        ->push(__('Article'), route('platform.systems.articles')));
 
-// Platform > System > News > Create
-Route::screen('news/create', EditScreen::class)
-    ->name('platform.systems.news.create')
+// Platform > System > Contents > Articles > Create
+Route::screen('article/create', ManuscriptEditScreen::class)
+    ->name('platform.systems.articles.create')
     ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.systems.news')
-        ->push(__('Create'), route('platform.systems.news.create')));
+        ->parent('platform.systems.articles')
+        ->push(__('Create'), route('platform.systems.articles.create')));
 
-// Platform > System > News > News
-Route::screen('news/{news}/edit', EditScreen::class)
-    ->name('platform.systems.news.edit')
-    ->breadcrumbs(fn (Trail $trail, $news) => $trail
-        ->parent('platform.systems.news')
-        ->push($news->name, route('platform.systems.news.edit', $news)));
+// Platform > System > Contents > Articles > Edit
+Route::screen('article/{article}/edit', ManuscriptEditScreen::class)
+    ->name('platform.systems.articles.edit')
+    ->breadcrumbs(fn (Trail $trail, $article) => $trail
+        ->parent('platform.systems.articles')
+        ->push($article->name, route('platform.systems.articles.edit', $article)));
 
-// Platform > System > Configurations
+// Platform > System > Settings > Configurations
 Route::screen('configurations', MainScreen::class)
     ->name('platform.systems.configurations')
     ->breadcrumbs(function (Trail $trail) {

@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace App\Orchid\Screens\Program;
+namespace App\Orchid\Screens\Vod\Program;
 
-use App\Models\ContentType;
-use App\Models\Program;
+use Google_Client;
 use App\Models\User;
-use App\Orchid\Layouts\Program\ProgramEditLayout;
+use Orchid\Screen\TD;
+use App\Models\Program;
 use Orchid\Screen\Screen;
-use Illuminate\Http\Request;
-use Orchid\Support\Facades\Toast;
-use Orchid\Screen\Actions\ModalToggle;
-use Orchid\Support\Facades\Layout;
-use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Relation;
-use Orchid\Screen\Fields\Switcher;
+use App\Models\ContentType;
 use Illuminate\Support\Str;
 use Google_Service_YouTube;
-use Google_Client;
-use Orchid\Screen\Actions\Button;
+use Illuminate\Http\Request;
+use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Group;
-use Orchid\Screen\TD;
+use Orchid\Support\Facades\Toast;
+use Orchid\Screen\Actions\Button;
+use Orchid\Support\Facades\Layout;
+use Orchid\Screen\Fields\Relation;
+use Orchid\Screen\Fields\Switcher;
+use Orchid\Screen\Actions\ModalToggle;
+use App\Orchid\Layouts\Vod\Program\ProgramEditLayout;
 
 class ProgramScreen extends Screen
 {
@@ -111,7 +111,7 @@ class ProgramScreen extends Screen
                     ->sort()
                     ->render(fn (Program $program) => $program['parent']->name),
 
-                TD::make('is_shared_to_live', __('Featured Program'))
+                TD::make('is_featured', __('Featured Program'))
                     ->sort()
                     ->render(fn (Program $program) => $program->is_featured ? '<i class="text-success">●</i> True'
                         : '<i class="text-danger">●</i> False'),
@@ -144,8 +144,8 @@ class ProgramScreen extends Screen
                     ->fromModel(ContentType::class, 'name')->applyScope('vod'),
 
                 Input::make('program.source')
-                    ->title('Youtube ID')
-                    ->placeholder('Share youtube id video on your program')
+                    ->title('Youtube URL')
+                    ->placeholder('Share Youtube URL video on your program')
                     ->help('Specify a short descriptive title for this program.'),
 
                 Group::make([
@@ -231,7 +231,9 @@ class ProgramScreen extends Screen
             'slug' => Str::slug($video['snippet']['title']),
             'body' => $video['snippet']['description'],
             'attr_1' => $formattedDuration,
-            'image' => $video['snippet']['thumbnails']['maxres']['url'],
+            'image' => isset($video['snippet']['thumbnails']['maxres']['url']) ?
+                $video['snippet']['thumbnails']['maxres']['url'] :
+                $video['snippet']['thumbnails']['standard']['url'],
             'is_featured' => $data['is_featured'],
             'is_shared_to_live' => $data['is_shared_to_live'],
             'active' => $data['active'],

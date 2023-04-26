@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Orchid\Layouts\Program;
+namespace App\Orchid\Layouts\Contents\News;
 
 use App\Models\User;
 use Orchid\Screen\Field;
@@ -14,7 +14,7 @@ use App\Models\ContentType;
 use Orchid\Screen\Fields\Group;
 use Orchid\Screen\TD;
 
-class ProgramEditLayout extends Rows
+class NewsEditLayout extends Rows
 {
     /**
      * The screen's layout elements.
@@ -24,36 +24,29 @@ class ProgramEditLayout extends Rows
     public function fields(): array
     {
         return [
-            Relation::make('program.author')
+            Relation::make('news.author')
                 ->title('Author')
                 ->required()
                 ->fromModel(User::class, 'name'),
 
-            Relation::make('program.parent_id')
+            Relation::make('news.parent_id')
                 ->title('Content Categories')
                 ->required()
-                ->fromModel(ContentType::class, 'name')->applyScope('vod'),
+                ->fromModel(ContentType::class, 'name')->applyScope('content'),
 
-            Input::make('program.source')
-                ->title('Youtube ID')
-                ->placeholder('Share youtube id video on your program')
-                ->help('Specify a short descriptive title for this program.'),
+            Input::make('news.source')
+                ->title('Youtube URL')
+                ->placeholder('Share youtube id video on your News')
+                ->help('Specify a short descriptive title for this news.'),
 
             Group::make([
-                Switcher::make('program.is_featured')
+                Switcher::make('news.is_highlight')
                     ->sendTrueOrFalse()
                     ->align(TD::ALIGN_RIGHT)
                     ->help('Slide the switch to on to change it to true.')
-                    ->title('Featured Program'),
+                    ->title('Highlight News'),
 
-                Switcher::make('program.is_shared_to_live')
-                    ->sendTrueOrFalse()
-                    ->align(TD::ALIGN_LEFT)
-                    ->help('Slide the switch to on to change it to true.')
-                    ->title('Share to Live TV'),
-            ]),
-            Group::make([
-                Switcher::make('program.active')
+                Switcher::make('news.active')
                     ->sendTrueOrFalse()
                     ->align(TD::ALIGN_RIGHT)
                     ->help('Slide the switch to on to change it to true.')

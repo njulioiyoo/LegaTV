@@ -128,66 +128,7 @@
     <!-- /LAYOUT BODY -->
 
     <!-- LAYOUT SIDEBAR -->
-    <div class="layout-sidebar layout-item gutter-medium">
-        <!-- WIDGET SIDEBAR -->
-        <div class="widget-sidebar">
-            <!-- SECTION TITLE WRAP -->
-            <div class="section-title-wrap cyan">
-                <h2 class="section-title medium">Popular Program</h2>
-                <div class="section-title-separator"></div>
-            </div>
-            <!-- /SECTION TITLE WRAP -->
-
-            <!-- POST PREVIEW SHOWCASE -->
-            <div class="post-preview-showcase grid-1col centered gutter-small">
-                <!-- POST PREVIEW -->
-                @foreach($popularProgram as $k => $pp)
-                <div class="post-preview video gaming-news tiny no-hover">
-                    <!-- POST PREVIEW IMG WRAP -->
-                    <a href="{{ route('program.detail', $pp['slug']) }}">
-                        <div class="post-preview-img-wrap">
-                            <!-- POST PREVIEW IMG -->
-                            <figure class="post-preview-img liquid">
-                                <img src="{{ $pp['image'] }}" alt="post-13">
-                            </figure>
-                            <!-- /POST PREVIEW IMG -->
-
-                            <!-- POST PREVIEW OVERLAY -->
-                            <div class="post-preview-overlay">
-                                <!-- PLAY BUTTON -->
-                                <div class="play-button tiny">
-                                    <!-- PLAY BUTTON ICON -->
-                                    <svg class="play-button-icon tiny">
-                                        <use xlink:href="#svg-play"></use>
-                                    </svg>
-                                    <!-- /PLAY BUTTON ICON -->
-                                </div>
-                                <!-- /PLAY BUTTON -->
-
-                                <!-- TIMESTAMP TAG -->
-                                <p class="timestamp-tag tiny">{{ $pp['duration'] }}</p>
-                                <!-- /TIMESTAMP TAG -->
-                            </div>
-                            <!-- /POST PREVIEW OVERLAY -->
-                        </div>
-                    </a>
-                    <!-- /POST PREVIEW IMG WRAP -->
-
-                    <!-- POST PREVIEW TITLE -->
-                    <a href="{{ route('program.detail', $pp['slug']) }}" class="post-preview-title">{{ Str::limit($pp['name'], 65) }}</a>
-                    <!-- POST AUTHOR INFO -->
-                    <div class="post-author-info-wrap">
-                        <p class="post-author-info small light">By <a href="#" class="post-author">{{ $pp['user']->name }}</a><span class="separator">|</span>{{ date('F jS, Y', strtotime($pp['created_at'])) }}</p>
-                    </div>
-                    <!-- /POST AUTHOR INFO -->
-                </div>
-                @endforeach
-                <!-- /POST PREVIEW -->
-            </div>
-            <!-- /POST PREVIEW SHOWCASE -->
-        </div>
-        <!-- /WIDGET SIDEBAR -->
-    </div>
+    @include('templates.elements.sidebar')
     <!-- /LAYOUT SIDEBAR -->
     @endif
 </div>

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Orchid\Screens\News;
+namespace App\Orchid\Screens\Contents\Article;
 
-use App\Models\News;
-use App\Orchid\Layouts\News\NewsListLayout;
+use App\Models\Article;
 use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Support\Facades\Toast;
+use App\Orchid\Layouts\Contents\Article\ManuscriptListLayout;
 
-class ListScreen extends Screen
+class ManuscriptListScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -21,7 +21,7 @@ class ListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'news' => News::paginate(),
+            'article' => Article::latest()->paginate(10),
         ];
     }
 
@@ -32,7 +32,7 @@ class ListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'News';
+        return 'Article';
     }
 
     /**
@@ -42,7 +42,7 @@ class ListScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'All blog news';
+        return 'All blog Article';
     }
 
     /**
@@ -51,7 +51,7 @@ class ListScreen extends Screen
     public function permission(): ?iterable
     {
         return [
-            'platform.systems.news',
+            'platform.systems.articles',
         ];
     }
 
@@ -65,19 +65,19 @@ class ListScreen extends Screen
         return [
             Link::make(__('Add'))
                 ->icon('plus')
-                ->route('platform.systems.news.create'),
+                ->route('platform.systems.articles.create'),
         ];
     }
 
     /**
      * The screen's layout elements.
      *
-     * @return string[]|\Orchid\Screen\Layout[]
+     * @return \Orchid\Screen\Layout[]|string[]
      */
     public function layout(): iterable
     {
         return [
-            NewsListLayout::class
+            ManuscriptListLayout::class,
         ];
     }
 
@@ -86,8 +86,8 @@ class ListScreen extends Screen
      */
     public function remove(Request $request): void
     {
-        News::findOrFail($request->get('id'))->delete();
+        Article::findOrFail($request->get('id'))->delete();
 
-        Toast::info(__('News was removed'));
+        Toast::info(__('Article was removed'));
     }
 }

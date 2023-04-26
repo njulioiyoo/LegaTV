@@ -37,22 +37,25 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.news'),
 
             Menu::make(__('Articles'))
-                ->icon('briefcase'),
-
-            Menu::make(__('Local News'))
-                ->icon('list')
+                ->icon('briefcase')
+                ->route('platform.systems.articles')
+                ->permission('platform.systems.articles')
                 ->divider(),
+
+            // Menu::make(__('Local News'))
+            //     ->icon('list')
+            //     ->divider(),
 
             Menu::make('')->title(__('Video On Demands')),
 
             Menu::make(__('Programs'))
                 ->icon('layers')
                 ->route('platform.systems.program')
-                ->permission('platform.systems.program'),
+                ->permission('platform.systems.program')->divider(),
 
-            Menu::make(__('Shorts'))
-                ->icon('bar-chart')
-                ->divider(),
+            // Menu::make(__('Shorts'))
+            //     ->icon('bar-chart')
+            //     ->divider(),
 
             Menu::make('')->title(__('Master Data')),
             Menu::make(__('Partnerships'))
@@ -105,10 +108,11 @@ class PlatformProvider extends OrchidServiceProvider
     {
         return [
             ItemPermission::group(__('System'))
+                ->addPermission('platform.systems.news', __('News'))
                 ->addPermission('platform.systems.roles', __('Roles'))
                 ->addPermission('platform.systems.users', __('Users'))
-                ->addPermission('platform.systems.news', __('News'))
                 ->addPermission('platform.systems.program', __('Programs'))
+                ->addPermission('platform.systems.articles', __('Articles'))
                 ->addPermission('platform.systems.content_type', __('Content Type'))
                 ->addPermission('platform.systems.partnerships', __('Partnerships'))
                 ->addPermission('platform.systems.configurations', __('Configurations')),
