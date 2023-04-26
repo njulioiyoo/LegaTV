@@ -8,7 +8,7 @@
     <div class="slider-items">
         <!-- SLIDER ITEM -->
         @foreach($content as $k => $v)
-        <div class="slider-item slider-item-{{ $k+1 }}">
+        <div class="slider-item slider-item-{{ $k+1 }}" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url('{{ $v['image'] }}') no-repeat center; background-size: cover;">
             <div class="slider-item-wrap">
                 <!-- POST PREVIEW -->
                 <div class="post-preview huge centered gaming-news">
