@@ -7,6 +7,7 @@ use App\Models\Program;
 use App\Helpers\CommonHelper;
 use App\Models\Article;
 use App\Models\Content;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
@@ -196,5 +197,37 @@ class PageController extends Controller
             ->get(['name', 'slug', 'image', 'source', 'description', 'body', 'author', 'parent_id', 'attr_1 as duration', 'created_at']);
 
         return view('pages.article.detail', compact('articleDetail', 'relatedArticle'));
+    }
+
+    public function search(Request $request)
+    {
+        if(empty($request->input('key'))){abort(404);}
+        $querySearch = str_replace(
+            [
+                '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
+                '[', ']', '{', '}', '+', '=', '|', '/', '?',
+                "'", '"', '.', ',', '<', '>', ':', ';'
+            ],
+            '',
+            $request->input('key')
+        );
+
+        if (!empty($querySearch) && strlen($querySearch) < 3) {
+            abort(404);
+        }
+
+        $search = [];
+        if (!empty($querySearch) && strlen($querySearch) > 2) {
+            $search = Content::select('name', 'slug', 'image', 'type', 'description', 'body', 'author', 'parent_id', 'created_at')->with(['user' => function ($query) {
+                $query->select('id', 'name', 'email');
+            }, 'parent' => function ($query) {
+                $query->select('id', 'name');
+            }])->where([
+                ['active', '=', 1],
+                ['body', 'LIKE', '%' . $querySearch . '%']
+            ])->orderBy('created_at', 'desc')->paginate(10);
+        }
+
+        return view('pages.search', compact('search'));
     }
 }

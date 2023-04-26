@@ -19,8 +19,12 @@
                         <!-- POST OPEN MEDIA WRAP -->
                         <div class="post-open-media-wrap">
                             <!-- POST OPEN MEDIA -->
+                            @php
+                                preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $programDetail['source'], $matches);
+                                $youtubeId = $matches[1];
+                            @endphp
                             <div class="post-open-media">
-                                <iframe src="https://www.youtube.com/embed/{{ $programDetail['source'] }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                             <!-- /POST OPEN MEDIA -->
                         </div>

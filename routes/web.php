@@ -31,3 +31,4 @@ Route::group(['prefix' => 'article'], function () {
 });
 
 Route::get('/live', ['as' => 'livetv', 'uses' => 'App\Http\Controllers\PageController@liveTV']);
+Route::get('/search', ['as' => 'search', 'uses' => 'App\Http\Controllers\PageController@search']);
