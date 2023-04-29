@@ -8,23 +8,23 @@ class MenuHelper
     {
         return [
             [
-                'name' => 'Home',
+                'name' => 'HOME',
                 'url' => '/',
             ],
             [
-                'name' => 'News',
+                'name' => 'NEWS',
                 'url' => '/news',
             ],
             [
-                'name' => 'Program',
+                'name' => 'PROGRAM',
                 'url' => '/program',
             ],
             [
-                'name' => 'Article',
+                'name' => 'ARTICLE',
                 'url' => '/article',
             ],
             [
-                'name' => 'Live TV',
+                'name' => 'LIVE TV',
                 'url' => '/live',
             ],
         ];

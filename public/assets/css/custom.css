@@ -128,3 +128,22 @@ video::-webkit-media-controls-panel {
     background-image: linear-gradient(transparent, transparent) !important;
 }
 
+.main-menu .main-menu-item-link:before {
+    content: '';
+    width: 100%;
+    height: 4px;
+    background-color: #e87826 !important;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+
+.button.blue {
+    background-color: #e87826 !important;
+}
+
+.button.blue .button-ornament {
+    background-color: #e87826 !important;
+}
