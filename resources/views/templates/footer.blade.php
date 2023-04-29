@@ -310,7 +310,7 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
     <!-- FOOTER BOTTOM -->
     <div class="footer-bottom grid-limit">
         <p class="footer-bottom-text"><span class="brand"><span class="highlighted">{{ $configurations['website_name'] ?? '' }}</span></span><span class="separator">|</span>All Rights Reserved {{ date('Y') }}</p>
-        <p class="footer-bottom-text"><a href="#">Terms and Conditions</a><span class="separator">|</span><a href="#">Privacy Policy</a></p>
+        <!-- <p class="footer-bottom-text"><a href="#">Terms and Conditions</a><span class="separator">|</span><a href="#">Privacy Policy</a></p> -->
     </div>
     <!-- /FOOTER BOTTOM -->
 </div>
