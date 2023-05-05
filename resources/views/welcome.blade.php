@@ -109,6 +109,9 @@
 
 @include('templates.elements.live-news')
 
+@php
+$configurations = App\Helpers\CommonHelper::getConfigurations();
+@endphp
 <!-- LAYOUT CONTENT 1 -->
 <div class="layout-content-1 layout-item-3-1 search-pad grid-limit">
     <!-- LAYOUT BODY -->
@@ -273,61 +276,15 @@
         <!-- /LAYOUT ITEM -->
 
         <!-- LAYOUT ITEM -->
+        @if(!empty($configurations['promo_ad_870x200']))
         <div class="layout-item padded">
             <a href="#">
                 <!-- PROMO BANNER -->
-                <div class="promo-banner">
-                    <!-- PROMO BANNER IMG -->
-                    <img src="assets/img/banners/live-play-banner-logo.png" alt="promo-banner-img" class="promo-banner-img">
-                    <!-- /PROMO BANNER IMG -->
-
-                    <!-- TAG ORNAMENT -->
-                    <p class="tag-ornament bold violet">Jan 18 - 10PM PCT</p>
-                    <!-- /TAG ORNAMENT -->
-
-                    <!-- PROMO BANNER INFO -->
-                    <div class="promo-banner-info">
-                        <p class="promo-banner-pre-title">Watch us play<span class="live-icon"></span>live</p>
-                        <p class="promo-banner-title">The last of them</p>
-                        <p class="promo-banner-text">With SakuraBliss99 and James-Spiegel</p>
-                    </div>
-                    <!-- /PROMO BANNER INFO -->
-
-                    <!-- COUNTDOWN ARC -->
-                    <div id="countdown-arc" class="countdown-arc">
-                        <!-- COUNTER WRAP -->
-                        <div class="counter-wrap">
-                            <div class="timer-days"></div>
-                            <p class="text-heading counter-text">Days</p>
-                        </div>
-                        <!-- /COUNTER WRAP -->
-
-                        <!-- COUNTER WRAP -->
-                        <div class="counter-wrap">
-                            <div class="timer-hours"></div>
-                            <p class="text-heading counter-text">Hours</p>
-                        </div>
-                        <!-- /COUNTER WRAP -->
-
-                        <!-- COUNTER WRAP -->
-                        <div class="counter-wrap">
-                            <div class="timer-minutes"></div>
-                            <p class="text-heading counter-text">Minutes</p>
-                        </div>
-                        <!-- /COUNTER WRAP -->
-
-                        <!-- COUNTER WRAP -->
-                        <div class="counter-wrap">
-                            <div class="timer-seconds"></div>
-                            <p class="text-heading counter-text">Seconds</p>
-                        </div>
-                        <!-- /COUNTER WRAP -->
-                    </div>
-                    <!-- /COUNTDOWN ARC -->
-                </div>
+                <img src="{{ asset($configurations['promo_ad_870x200']) }}" alt="promo-banner-img" class="promo-banner-img">
                 <!-- /PROMO BANNER -->
             </a>
         </div>
+        @endif
         <!-- /LAYOUT ITEM -->
 
         <!-- LAYOUT ITEM -->

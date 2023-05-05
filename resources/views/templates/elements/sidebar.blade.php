@@ -1,3 +1,6 @@
+@php
+$configurations = App\Helpers\CommonHelper::getConfigurations();
+@endphp
 <div class="layout-sidebar layout-item gutter-medium">
     <!-- WIDGET SIDEBAR -->
     <div class="widget-sidebar">
@@ -100,17 +103,19 @@
     <!-- /WIDGET SIDEBAR -->
 
     <!-- WIDGET SIDEBAR -->
+    @if(!empty($configurations['promo_ad_250x250']))
     <div class="widget-sidebar">
         <!-- PROMO ADVERT -->
         <div class="promo-advert">
             <a href="#">
                 <!-- PROMO ADVERT IMG -->
-                <img class="promo-advert-img" src="{{ asset('assets/img/banners/promo-ad-1.jpg') }}" alt="promo-ad-1">
+                <img class="promo-advert-img" src="{{ asset($configurations['promo_ad_250x250']) }}" alt="promo-ad-1">
                 <!-- /PROMO ADVERT IMG -->
             </a>
         </div>
         <!-- /PROMO ADVERT -->
     </div>
+    @endif
     <!-- /WIDGET SIDEBAR -->
 
     @if(request()->route()->getName() != 'news')
@@ -153,19 +158,4 @@
         <!-- /POST PREVIEW SHOWCASE -->
     </div>
     @endif
-
-    <!-- WIDGET SIDEBAR -->
-    <div class="widget-sidebar">
-        <!-- SECTION TITLE WRAP -->
-        <div class="section-title-wrap red">
-            <h2 class="section-title medium">Instagram Widget</h2>
-            <div class="section-title-separator"></div>
-        </div>
-        <!-- /SECTION TITLE WRAP -->
-
-        <!-- PHOTO LIST -->
-        <div class="photo-list"></div>
-        <!-- /PHOTO LIST -->
-    </div>
-    <!-- /WIDGET SIDEBAR -->
 </div>

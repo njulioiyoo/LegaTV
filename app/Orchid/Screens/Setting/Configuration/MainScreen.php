@@ -82,6 +82,8 @@ class MainScreen extends Screen
     {
         $configurations = Configuration::pluck('value', 'key')->all();
         $websiteLogo = $configurations['website_logo'] ?? '';
+        $promoAd250x250 = $configurations['promo_ad_250x250'] ?? '';
+        $promoAd870x200 = $configurations['promo_ad_870x200'] ?? '';
 
         return [
             Layout::tabs([
@@ -168,6 +170,23 @@ class MainScreen extends Screen
                         ->value($configurations['status_live_tv'] ?? '')
                         ->horizontal()
                 ]),
+                'Banner' =>
+                Layout::rows([
+                    Cropper::make('promo_ad_250x250')
+                        ->title('Promo Ad (250x250)')
+                        ->width(200)
+                        ->height(200)
+                        ->keepAspectRatio()
+                        ->value($promoAd250x250)
+                        ->horizontal(),
+                    Cropper::make('promo_ad_870x200')
+                        ->title('Promo Ad (870x200)')
+                        ->width(870)
+                        ->height(130)
+                        ->keepAspectRatio()
+                        ->value($promoAd870x200)
+                        ->horizontal(),
+                ]),
             ]),
         ];
     }
@@ -188,9 +207,11 @@ class MainScreen extends Screen
                 $configuration = new Configuration();
                 $configuration->key = $key;
             }
-            if ($configuration->value !== $value) {
+            if ($value !== null) {
                 $configuration->value = $value;
                 $configuration->save();
+            } else {
+                $configuration->delete();
             }
         }
 
