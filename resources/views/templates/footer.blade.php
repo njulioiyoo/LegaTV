@@ -309,7 +309,8 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
 <div class="footer-bottom-wrap">
     <!-- FOOTER BOTTOM -->
     <div class="footer-bottom grid-limit">
-        <p class="footer-bottom-text"><span class="brand"><span class="highlighted">{{ $configurations['website_name'] ?? '' }}</span></span><span class="separator">|</span>All Rights Reserved {{ date('Y') }}</p>
+        <p class="footer-bottom-text"><span class="brand"><span class="highlighted">Copyright © {{ $configurations['website_name'] }} {{ date('Y') }}.</span></span><span class="separator">|</span> All rights reserved. No part of this website may be reproduced, distributed, or transmitted in any form or by any means without the prior written permission of {{ $configurations['website_name'] }}.
+        </p>
         <!-- <p class="footer-bottom-text"><a href="#">Terms and Conditions</a><span class="separator">|</span><a href="#">Privacy Policy</a></p> -->
     </div>
     <!-- /FOOTER BOTTOM -->

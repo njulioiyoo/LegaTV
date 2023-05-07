@@ -1,5 +1,11 @@
 @extends('templates.layout')
 
+@section('meta-name')
+<meta name="title" content="{{ $programDetail['name'] }}">
+<meta name="keywords" content="{{ Str::limit($programDetail['body'], 100) }}">
+<meta name="description" content="{{ $programDetail['body'] }}">
+@endsection
+
 @section('content')
 
 @include('templates.elements.live-news')
@@ -20,8 +26,8 @@
                         <div class="post-open-media-wrap">
                             <!-- POST OPEN MEDIA -->
                             @php
-                                preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $programDetail['source'], $matches);
-                                $youtubeId = $matches[1];
+                            preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $programDetail['source'], $matches);
+                            $youtubeId = $matches[1];
                             @endphp
                             <div class="post-open-media">
                                 <iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

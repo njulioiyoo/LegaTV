@@ -1,5 +1,11 @@
 @extends('templates.layout')
 
+@section('meta-name')
+<meta name="title" content="{{ $articleDetail['name'] }}">
+<meta name="keywords" content="{{ Str::limit($articleDetail['body'], 100) }}">
+<meta name="description" content="{{ $articleDetail['body'] }}">
+@endsection
+
 @section('content')
 
 @include('templates.elements.live-news')

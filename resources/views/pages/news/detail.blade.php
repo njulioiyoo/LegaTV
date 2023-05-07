@@ -1,5 +1,11 @@
 @extends('templates.layout')
 
+@section('meta-name')
+<meta name="title" content="{{ $newsDetail['name'] }}">
+<meta name="keywords" content="{{ Str::limit($newsDetail['body'], 100) }}">
+<meta name="description" content="{{ $newsDetail['body'] }}">
+@endsection
+
 @section('content')
 
 @include('templates.elements.live-news')
@@ -20,8 +26,8 @@
                         <div class="post-open-img-wrap">
                             @if(!empty($newsDetail['source']))
                             @php
-                                preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $newsDetail['source'], $matches);
-                                $youtubeId = $matches[1];
+                            preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $newsDetail['source'], $matches);
+                            $youtubeId = $matches[1];
                             @endphp
                             <div class="video-container">
                                 <iframe src="https://www.youtube.com/embed/{{ $youtubeId }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
