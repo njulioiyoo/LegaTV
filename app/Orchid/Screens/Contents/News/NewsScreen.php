@@ -216,6 +216,11 @@ class NewsScreen extends Screen
         $totalSeconds = $hours * 3600 + $minutes * 60 + $seconds;
         $formattedDuration = gmdate("i:s", $totalSeconds); // format to "mm:ss"
 
+        $thumbnail = isset($video['snippet']['thumbnails']['maxres']['url']) ? $video['snippet']['thumbnails']['maxres']['url'] : null;
+        if (!$thumbnail) {
+            $thumbnail = isset($video['snippet']['thumbnails']['standard']['url']) ? $video['snippet']['thumbnails']['standard']['url'] : null;
+        }
+        $image = $thumbnail ?: $video['snippet']['thumbnails']['default']['url']; // Replace 'default_image_url' with your default image URL
         $create = array(
             'author' => $data['author'],
             'parent_id' => $data['parent_id'],
@@ -224,9 +229,7 @@ class NewsScreen extends Screen
             'slug' => Str::slug($video['snippet']['title']),
             'body' => $video['snippet']['description'],
             'attr_1' => $formattedDuration,
-            'image' => isset($video['snippet']['thumbnails']['maxres']['url']) ?
-                $video['snippet']['thumbnails']['maxres']['url'] :
-                $video['snippet']['thumbnails']['standard']['url'],
+            'image' => $image,
             'is_highlight' => $data['is_highlight'],
             'active' => $data['active'],
         );
