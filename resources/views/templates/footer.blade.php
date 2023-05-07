@@ -60,6 +60,7 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
             <!-- SOCIAL LINKS -->
             <div class="social-links">
                 <!-- BUBBLE ORNAMENT -->
+                @if(!empty($configurations['facebook']))
                 <a href="{{ $configurations['facebook'] ?? '' }}" target="_blank" class="bubble-ornament fb">
                     <!-- FACEBOOK ICON -->
                     <svg class="facebook-icon">
@@ -67,9 +68,11 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
                     </svg>
                     <!-- /FACEBOOK ICON -->
                 </a>
+                @endif
                 <!-- /BUBBLE ORNAMENT -->
 
                 <!-- BUBBLE ORNAMENT -->
+                @if(!empty($configurations['twitter']))
                 <a href="{{ $configurations['twitter'] ?? '' }}" target="_blank" class="bubble-ornament twt">
                     <!-- TWITTER ICON -->
                     <svg class="twitter-icon">
@@ -77,9 +80,11 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
                     </svg>
                     <!-- /TWITTER ICON -->
                 </a>
+                @endif
                 <!-- /BUBBLE ORNAMENT -->
 
                 <!-- BUBBLE ORNAMENT -->
+                @if(!empty($configurations['instagram']))
                 <a href="{{ $configurations['instagram'] ?? '' }}" target="_blank" class="bubble-ornament insta">
                     <!-- INSTAGRAM ICON -->
                     <svg class="instagram-icon">
@@ -87,6 +92,7 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
                     </svg>
                     <!-- /INSTAGRAM ICON -->
                 </a>
+                @endif
                 <!-- /BUBBLE ORNAMENT -->
             </div>
             <!-- /SOCIAL LINKS -->
@@ -111,42 +117,7 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
                 <!-- CONTACT INFO PREVIEW -->
                 <div class="contact-info-preview negative">
                     <p class="contact-info-preview-text">{{ $configurations['website_contact_info'] ?? '' }}</p>
-                    <!-- CONTACT INFO PREVIEW SIGN -->
-                    <div class="contact-info-preview-sign">
-                        <!-- BUBBLE ORNAMENT -->
-                        <div class="bubble-ornament medium green">
-                            <i class="icon-bubbles bubbles-icon"></i>
-                        </div>
-                        <!-- /BUBBLE ORNAMENT -->
-                        <p class="contact-info-preview-sign-text">Subscribe to our newsletter!</p>
-                    </div>
-                    <!-- CONTACT INFO PREVIEW SIGN -->
-
-                    <!-- CONTACT INFO PREVIEW FORM -->
-                    <form method="GET" class="contact-info-preview-form">
-                        <!-- FORM ROW -->
-                        <div class="form-row">
-                            <!-- FORM ITEM -->
-                            <div class="form-item">
-                                <!-- SUBMIT INPUT -->
-                                <div class="submit-input green">
-                                    <input type="text" id="footer-subscribe-email" name="footer-subscribe-email" placeholder="Enter your email here...">
-                                    <button class="submit-input-button">
-                                        <!-- ARROW ICON -->
-                                        <svg class="arrow-icon medium">
-                                            <use xlink:href="#svg-arrow-medium"></use>
-                                        </svg>
-                                        <!-- /ARROW ICON -->
-                                    </button>
-                                </div>
-                                <!-- /SUBMIT INPUT -->
-                            </div>
-                            <!-- /FORM ITEM -->
-                        </div>
-                        <!-- /FORM ROW -->
-                    </form>
-                    <!-- /CONTACT INFO PREVIEW FORM -->
-
+                
                     <!-- CONTACT INFO PREVIEW EMAIL WRAP -->
                     <div class="contact-info-preview-email-wrap">
                         <i class="email-icon icon-envelope"></i>
