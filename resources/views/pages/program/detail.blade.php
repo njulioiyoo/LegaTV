@@ -64,30 +64,6 @@
                         <!-- POST OPEN TEXT -->
                         <p class="post-open-text"><span class="video-length">{{ $programDetail['duration'] }}</span>{!! $programDetail['body'] !!}</p>
                         <!-- /POST OPEN TEXT -->
-
-                        <!-- SOCIAL LINKS -->
-                        <div class="social-links">
-                            <!-- BUBBLE ORNAMENT -->
-                            <a href="#" class="bubble-ornament fb">
-                                <!-- FACEBOOK ICON -->
-                                <svg class="facebook-icon">
-                                    <use xlink:href="#svg-facebook"></use>
-                                </svg>
-                                <!-- /FACEBOOK ICON -->
-                            </a>
-                            <!-- /BUBBLE ORNAMENT -->
-
-                            <!-- BUBBLE ORNAMENT -->
-                            <a href="#" class="bubble-ornament twt">
-                                <!-- TWITTER ICON -->
-                                <svg class="twitter-icon">
-                                    <use xlink:href="#svg-twitter"></use>
-                                </svg>
-                                <!-- /TWITTER ICON -->
-                            </a>
-                            <!-- /BUBBLE ORNAMENT -->
-                        </div>
-                        <!-- /SOCIAL LINKS -->
                     </div>
                     <!-- /POST OPEN BODY -->
                 </div>
