@@ -13,7 +13,6 @@
                 <!-- POST PREVIEW -->
                 <div class="post-preview huge centered gaming-news">
                     <!-- TAG ORNAMENT -->
-                    <a href="#" class="tag-ornament">{{ $v['parent']->name }}</a>
                     <!-- /TAG ORNAMENT -->
                     <!-- POST PREVIEW TITLE -->
                     <a href="{{ route(''.$v['type'].'.detail', $v['slug']) }}" class="post-preview-title" style="font-size: 1.125em;">{{ $v['name'] }}</a>
@@ -138,9 +137,6 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
 
                                     <!-- POST PREVIEW OVERLAY -->
                                     <div class="post-preview-overlay">
-                                        <!-- TAG ORNAMENT -->
-                                        <span class="tag-ornament">{{ $latestProgram['parent']->name }}</span>
-                                        <!-- /TAG ORNAMENT -->
 
                                         <!-- POST PREVIEW TITLE -->
                                         <p class="post-preview-title">{{ $latestProgram['name'] }}</p>
@@ -180,10 +176,6 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
                                     <p class="post-preview-title">{{ $latestProgram['name'] }}</p>
                                 </div>
                                 <!-- /POST PREVIEW OVERLAY -->
-
-                                <!-- TAG ORNAMENT -->
-                                <span class="tag-ornament">{{ $latestProgram['parent']->name }}</span>
-                                <!-- /TAG ORNAMENT -->
                             </div>
                             <!-- /POST PREVIEW IMG WRAP -->
 
@@ -247,10 +239,6 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
                     </div>
                 </a>
                 <!-- /POST PREVIEW IMG WRAP -->
-
-                <!-- TAG ORNAMENT -->
-                <a href="news-v1.html" class="tag-ornament">{{ $n['parent']->name }}</a>
-                <!-- /TAG ORNAMENT -->
 
                 <!-- POST PREVIEW TITLE -->
                 <a href="{{ route('news.detail', $n['slug']) }}" class="post-preview-title">{{ $n['name'] }}</a>
@@ -347,10 +335,6 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
                             </div>
                         </a>
                         <!-- /POST PREVIEW IMG WRAP -->
-
-                        <!-- TAG ORNAMENT -->
-                        <a href="#" class="tag-ornament video" style="top: 140px;">{{ $p['parent']->name }}</a>
-                        <!-- /TAG ORNAMENT -->
 
                         <!-- POST PREVIEW TITLE -->
                         <a href="{{ route('program.detail', $p['slug']) }}" class="post-preview-title">{{ $p['name'] }}</a>
