@@ -66,7 +66,7 @@ class CommonHelper
         return News::where([
             ['active', '=', 1],
             ['is_shared_to_live', '=', 1]
-        ])->latest()->get(['name', 'slug', 'body']);
+        ])->orderBy('created_at', 'desc')->take(5)->get(['name', 'slug', 'body']);
     }
 
     public static function getPartnerships()
