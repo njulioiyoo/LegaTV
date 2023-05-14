@@ -67,9 +67,9 @@
                 <!-- /POST PREVIEW IMG WRAP -->
 
                 <!-- TAG LIST -->
-                <div class="tag-list">
+                <!-- <div class="tag-list">
                     <a href="#" class="tag-ornament video">{{ $p['parent']->name }}</a>
-                </div>
+                </div> -->
                 <!-- /TAG LIST -->
 
                 <!-- POST PREVIEW TITLE -->

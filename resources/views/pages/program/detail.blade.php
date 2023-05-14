@@ -37,11 +37,11 @@
                         <!-- /POST OPEN MEDIA WRAP -->
 
                         <!-- TAG LIST -->
-                        <div class="tag-list">
-                            <!-- TAG ORNAMENT -->
-                            <a href="#" class="tag-ornament video">{{ $programDetail['parent']->name }}</a>
-                            <!-- /TAG ORNAMENT -->
-                        </div>
+                        <!-- <div class="tag-list"> -->
+                        <!-- TAG ORNAMENT -->
+                        <!-- <a href="#" class="tag-ornament video">{{ $programDetail['parent']->name }}</a> -->
+                        <!-- /TAG ORNAMENT -->
+                        <!-- </div> -->
                         <!-- /TAG LIST -->
 
                         <!-- POST OPEN TITLE -->

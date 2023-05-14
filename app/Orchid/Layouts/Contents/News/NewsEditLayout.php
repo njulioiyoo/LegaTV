@@ -46,6 +46,12 @@ class NewsEditLayout extends Rows
                     ->help('Slide the switch to on to change it to true.')
                     ->title('Highlight News'),
 
+                Switcher::make('news.is_shared_to_live')
+                    ->sendTrueOrFalse()
+                    ->align(TD::ALIGN_RIGHT)
+                    ->help('Slide the switch to on to change it to true.')
+                    ->title('Shared to Live News'),
+
                 Switcher::make('news.active')
                     ->sendTrueOrFalse()
                     ->align(TD::ALIGN_RIGHT)

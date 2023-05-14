@@ -113,6 +113,11 @@ class NewsScreen extends Screen
                     ->render(fn (News $news) => $news->is_highlight ? '<i class="text-success">●</i> True'
                         : '<i class="text-danger">●</i> False'),
 
+                TD::make('is_shared_to_live', __('Shared to Live News'))
+                    ->sort()
+                    ->render(fn (News $news) => $news->is_shared_to_live ? '<i class="text-success">●</i> True'
+                        : '<i class="text-danger">●</i> False'),
+
                 TD::make('attr_1', __('Duration'))
                     ->sort()
                     ->render(fn (News $news) => $news->attr_1),
@@ -154,6 +159,12 @@ class NewsScreen extends Screen
                         ->align(TD::ALIGN_RIGHT)
                         ->help('Slide the switch to on to change it to true.')
                         ->title('Highlight News'),
+
+                    Switcher::make('news.is_shared_to_live')
+                        ->sendTrueOrFalse()
+                        ->align(TD::ALIGN_RIGHT)
+                        ->help('Slide the switch to on to change it to true.')
+                        ->title('Shared to Live News'),
 
                     Switcher::make('news.active')
                         ->sendTrueOrFalse()
@@ -231,6 +242,7 @@ class NewsScreen extends Screen
             'attr_1' => $formattedDuration,
             'image' => $image,
             'is_highlight' => $data['is_highlight'],
+            'is_shared_to_live' => $data['is_shared_to_live'],
             'active' => $data['active'],
         );
 

@@ -29,9 +29,9 @@
                     <!-- POST OPEN BODY  -->
                     <div class="post-open-body">
                         <!-- TAG LIST -->
-                        <div class="tag-list">
+                        <!-- <div class="tag-list">
                             <a href="#" class="tag-ornament">{{ $articleDetail['parent']->name }}</a>
-                        </div>
+                        </div> -->
                         <!-- /TAG LIST -->
 
                         <!-- POST OPEN TITLE -->
@@ -133,7 +133,7 @@
                         <!-- /POST PREVIEW IMG WRAP -->
 
                         <!-- TAG ORNAMENT -->
-                        <a href="#" class="tag-ornament">{{ $r['parent']->name }}</a>
+                        <!-- <a href="#" class="tag-ornament">{{ $r['parent']->name }}</a> -->
                         <!-- /TAG ORNAMENT -->
 
                         <!-- POST PREVIEW TITLE -->

@@ -46,7 +46,7 @@
                 <!-- /POST PREVIEW IMG WRAP -->
 
                 <!-- TAG ORNAMENT -->
-                <a href="#" class="tag-ornament">{{ $a['parent']->name }}</a>
+                <!-- <a href="#" class="tag-ornament">{{ $a['parent']->name }}</a> -->
                 <!-- /TAG ORNAMENT -->
 
                 <!-- POST PREVIEW TITLE -->

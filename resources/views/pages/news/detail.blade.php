@@ -41,7 +41,7 @@
                             @endif
 
                             <!-- TAG ORNAMENT -->
-                            <a href="#" class="tag-ornament">{{ $newsDetail['parent']->name }}</a>
+                            <!-- <a href="#" class="tag-ornament">{{ $newsDetail['parent']->name }}</a> -->
                             <!-- /TAG ORNAMENT -->
                         </div>
                         <!-- /POST OPEN IMG WRAP -->
@@ -111,7 +111,7 @@
                         <!-- /POST PREVIEW IMG WRAP -->
 
                         <!-- TAG ORNAMENT -->
-                        <a href="#" class="tag-ornament">{{ $r['parent']->name }}</a>
+                        <!-- <a href="#" class="tag-ornament">{{ $r['parent']->name }}</a> -->
                         <!-- /TAG ORNAMENT -->
 
                         <!-- POST PREVIEW TITLE -->

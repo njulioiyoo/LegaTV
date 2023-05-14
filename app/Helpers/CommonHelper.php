@@ -6,6 +6,7 @@ use App\Models\Configuration;
 use App\Models\News;
 use App\Models\Partnership;
 use App\Models\Program;
+use Illuminate\Support\Facades\DB;
 
 class CommonHelper
 {
@@ -94,5 +95,53 @@ class CommonHelper
             ->with('user:id,name,email', 'parent:id,name')
             ->orderBy('created_at', 'desc')
             ->get(['name', 'slug', 'image', 'source', 'description', 'body', 'author', 'parent_id', 'attr_1 as duration', 'created_at']);
+    }
+
+    /**
+     * Mengambil total viewed pada hari ini dari suatu model.
+     *
+     * @param string $model
+     * @return int
+     */
+    public static function getTotalViewedToday($model, $type)
+    {
+        return DB::table((new $model)->getTable())
+            ->where([
+                ['active', '=', 1],
+                ['type', '=', $type]
+            ])
+            ->whereDate('created_at', today())
+            ->sum('viewed');
+    }
+
+    /**
+     * Mengambil total viewed pada hari sebelumnya dari suatu model.
+     *
+     * @param string $model
+     * @return int
+     */
+    public static function getTotalViewedYesterday($model, $type)
+    {
+        return DB::table((new $model)->getTable())
+            ->where([
+                ['active', '=', 1],
+                ['type', '=', $type]
+            ])
+            ->whereDate('created_at', today()->subDay())
+            ->sum('viewed');
+    }
+
+    /**
+     * Menghitung persentase perubahan dari suatu model.
+     *
+     * @param string $model
+     * @return float
+     */
+    public static function getPercentChange($model, $type)
+    {
+        $total_viewed_today = self::getTotalViewedToday($model, $type);
+        $total_viewed_yesterday = self::getTotalViewedYesterday($model, $type);
+
+        return $total_viewed_yesterday != 0 ? ($total_viewed_today - $total_viewed_yesterday) / $total_viewed_yesterday * 100 : 0;
     }
 }
