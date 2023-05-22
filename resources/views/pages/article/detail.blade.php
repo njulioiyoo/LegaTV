@@ -38,66 +38,25 @@
                         <p class="post-open-title">{{ $articleDetail['name'] }}</p>
                         <!-- /POST OPEN TITLE -->
 
-                        <!-- POST AUTHOR INFO -->
-                        <div class="post-author-info-wrap">
-                            <!-- USER AVATAR -->
-                            <a href="search-results.html">
-                                <figure class="user-avatar tiny liquid">
-                                    <img src="{{ asset('assets/img/users/01.jpg') }}" alt="user-01">
-                                </figure>
-                            </a>
-                            <!-- /USER AVATAR -->
-                            <p class="post-author-info small light">By <a href="#" class="post-author">{{ $articleDetail['user']->name }}</a><span class="separator">|</span>{{ date('F jS, Y', strtotime($articleDetail['created_at'])) }}</p>
-                        </div>
-                        <!-- /POST AUTHOR INFO -->
-
                         <!-- POST OPEN TEXT -->
                         <p class="post-open-text bold">{!! $articleDetail['body'] !!}</p>
                         <!-- /POST OPEN TEXT -->
                     </div>
                     <!-- /POST OPEN BODY -->
-
                     <!-- POST OPEN SIDEBAR -->
                     <div class="post-open-sidebar">
-                        <!-- SOCIAL LINKS -->
-                        <div class="social-links medium vertical animated">
-                            <!-- BUBBLE ORNAMENT -->
-                            <a href="#" class="bubble-ornament big fb">
-                                <!-- FACEBOOK ICON -->
-                                <svg class="facebook-icon big">
-                                    <use xlink:href="#svg-facebook"></use>
-                                </svg>
-                                <!-- /FACEBOOK ICON -->
-                                <p class="bubble-ornament-text">120</p>
-                                <p class="bubble-ornament-text hover-replace">Share</p>
-                            </a>
-                            <!-- /BUBBLE ORNAMENT -->
 
-                            <!-- BUBBLE ORNAMENT -->
-                            <a href="#" class="bubble-ornament big twt">
-                                <!-- TWITTER ICON -->
-                                <svg class="twitter-icon big">
-                                    <use xlink:href="#svg-twitter"></use>
-                                </svg>
-                                <!-- /TWITTER ICON -->
-                                <p class="bubble-ornament-text">63</p>
-                                <p class="bubble-ornament-text hover-replace">Share</p>
-                            </a>
-                            <!-- /BUBBLE ORNAMENT -->
+                        <!-- FEATURE LIST -->
+                        <div class="feature-list">
+                            <!-- FEATURE LIST ITEM -->
+                            <p class="feature-list-item"><span class="feature-title">Date</span><span class="feature-info">{{ date('F jS, Y', strtotime($articleDetail['created_at'])) }}</span></p>
+                            <!-- /FEATURE LIST ITEM -->
 
-                            <!-- BUBBLE ORNAMENT -->
-                            <a href="#" class="bubble-ornament big gplus">
-                                <!-- GPLUS ICON -->
-                                <svg class="gplus-icon big">
-                                    <use xlink:href="#svg-gplus"></use>
-                                </svg>
-                                <!-- /GPLUS ICON -->
-                                <p class="bubble-ornament-text">46</p>
-                                <p class="bubble-ornament-text hover-replace">Share</p>
-                            </a>
-                            <!-- /BUBBLE ORNAMENT -->
+                            <!-- FEATURE LIST ITEM -->
+                            <p class="feature-list-item"><span class="feature-title">Author</span><span class="feature-info">{{ $articleDetail['user']->name }}</span></p>
+                            <!-- /FEATURE LIST ITEM -->
                         </div>
-                        <!-- /SOCIAL LINKS -->
+                        <!-- /FEATURE LIST -->
                     </div>
                     <!-- /POST OPEN SIDEBAR -->
                 </div>
