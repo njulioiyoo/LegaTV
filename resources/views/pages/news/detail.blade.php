@@ -6,6 +6,8 @@
 <meta name="description" content="{{ $newsDetail['body'] }}">
 @endsection
 
+@section('title', $newsDetail['name'])
+
 @section('content')
 
 @include('templates.elements.live-news')

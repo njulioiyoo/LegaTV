@@ -6,10 +6,10 @@
 <meta name="description" content="{{ $programDetail['body'] }}">
 @endsection
 
+@section('title', $programDetail['name'])
+
 @section('content')
-
 @include('templates.elements.live-news')
-
 <!-- LAYOUT CONTENT 1 -->
 <div class="layout-content-1 layout-item-3-1 grid-limit">
     <!-- LAYOUT BODY -->

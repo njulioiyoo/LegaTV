@@ -10,9 +10,13 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
     <meta name="revisit-after" content="3 days">
     <meta name="robots" content="all,index,follow">
     <meta name="author" content="{{ $configurations['website_name'] }}">
+    <meta name="googlebot" content="index,follow">
+    <meta name="googlebot-news" content="index,follow">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     @yield('meta-name')
+
+    <link rel="canonical" href="https://www.legatvonline.com/">
 
     <!-- style -->
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
@@ -25,8 +29,11 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Reply-to" content="{{ $configurations['website_mail'] }}">
 
-    <title>{{ $configurations['website_name'] ?? '' }}</title>
+    <title>{{ $configurations['website_name'] ?? '' }} - @yield('title')</title>
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3111379389900750"
+     crossorigin="anonymous"></script>
+     
     <meta property="og:title" content="{{ $configurations['website_name'] }}" />
     <meta property="og:description" content="{{ $configurations['website_description'] }}" />
     <meta property="og:type" content="website" />

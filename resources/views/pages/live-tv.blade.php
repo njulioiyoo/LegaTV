@@ -1,5 +1,7 @@
 @extends('templates.layout')
 
+@section('title', 'Live TV')
+
 @section('content')
 
 @include('templates.elements.live-news')

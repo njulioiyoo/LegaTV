@@ -1,7 +1,8 @@
 @extends('templates.layout')
 
-@section('content')
+@section('title', 'Program')
 
+@section('content')
 <!-- BANNER WRAP -->
 <div class="banner-wrap geeky-news">
     <!-- BANNER -->
