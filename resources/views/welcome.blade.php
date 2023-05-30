@@ -1,11 +1,5 @@
 @extends('templates.layout')
 
-@section('meta-name')
-<meta name="title" content="Berita Terkini dan Informasi Terbaru Hari Ini">
-<meta name="description" content="Lega TV - Situs portal berita nasional dan daerah yang menyajikan informasi terkini dan terbaru seperti, Berita Politik, Hukum, Keuangan, Teknologi">
-<meta name="keywords" content="legatv, legatvonline, berita terkini, berita hari ini, berita terbaru, kabar terkini, kabar terbaru, seputar indonesia, berita daerah, berita indonesia">
-@endsection
-
 @section('title', 'Home')
 
 @section('content')

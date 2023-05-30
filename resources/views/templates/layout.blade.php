@@ -14,7 +14,13 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
     <meta name="googlebot-news" content="index,follow">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    @yield('meta-name')
+    @if (\Route::currentRouteName() != 'news.detail' && \Route::currentRouteName() != 'program.detail' && Route::currentRouteName() != 'article.detail')
+    <meta name="title" content="Berita Terkini dan Informasi Terbaru Hari Ini">
+    <meta name="description" content="Lega TV - Situs portal berita nasional dan daerah yang menyajikan informasi terkini dan terbaru seperti, Berita Politik, Hukum, Keuangan, Teknologi">
+    <meta name="keywords" content="legatv, legatvonline, berita terkini, berita hari ini, berita terbaru, kabar terkini, kabar terbaru, seputar indonesia, berita daerah, berita indonesia">
+    @else
+      @yield('meta-name')
+    @endif
 
     <link rel="canonical" href="https://www.legatvonline.com/">
 
@@ -33,7 +39,7 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3111379389900750"
      crossorigin="anonymous"></script>
-     
+
     <meta property="og:title" content="{{ $configurations['website_name'] }}" />
     <meta property="og:description" content="{{ $configurations['website_description'] }}" />
     <meta property="og:type" content="website" />
