@@ -147,3 +147,88 @@ video::-webkit-media-controls-panel {
 .button.blue .button-ornament {
     background-color: #e87826 !important;
 }
+
+/* Cookie Controler */
+.cookie-container {
+    font-family: Helvetica, Arial, sans-serif;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.cookie-box {
+    max-width: 1140px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    color: #fff;
+    padding: 0.5rem;
+    margin: auto;
+}
+
+.cookie-text,
+.cookie-action {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+@media (min-width: 1080px) {
+    .cookie-text {
+        flex: 0 0 calc(70% - 16px);
+    }
+
+    .cookie-action {
+        flex: 0 0 calc(30% - 16px);
+        text-align: right;
+    }
+}
+
+/* Button Style */
+.btn-ctrl {
+    padding: 0.75rem;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-blue {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-blue:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-outline-white {
+    color: #fff;
+    border-color: #fff;
+}
+
+.btn-outline-white:hover {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.btn-text-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.btn-text-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}

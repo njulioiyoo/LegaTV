@@ -19,7 +19,7 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
     <meta name="description" content="Lega TV - Situs portal berita nasional dan daerah yang menyajikan informasi terkini dan terbaru seperti, Berita Politik, Hukum, Keuangan, Teknologi">
     <meta name="keywords" content="legatv, legatvonline, berita terkini, berita hari ini, berita terbaru, kabar terkini, kabar terbaru, seputar indonesia, berita daerah, berita indonesia">
     @else
-      @yield('meta-name')
+    @yield('meta-name')
     @endif
 
     <link rel="canonical" href="https://www.legatvonline.com/">
@@ -37,8 +37,7 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
 
     <title>{{ $configurations['website_name'] ?? '' }} - @yield('title')</title>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3111379389900750"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3111379389900750" crossorigin="anonymous"></script>
 
     <meta property="og:title" content="{{ $configurations['website_name'] }}" />
     <meta property="og:description" content="{{ $configurations['website_description'] }}" />
@@ -71,6 +70,45 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
     @stack('script')
     <!-- app bundle -->
     <script src="{{ asset('assets/app.bundle.min.js') }}"></script>
+    <script>
+        // Function to check if the "cookies_accepted" cookie is set to "true"
+        function areCookiesAccepted() {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.startsWith("cookies_accepted=")) {
+                    var value = cookie.substring("cookies_accepted=".length);
+                    return value === "true";
+                }
+            }
+            return false;
+        }
+
+        // Function to hide the cookie message
+        function hideCookieMessage() {
+            var cookieContainer = document.getElementById("accept");
+            if (areCookiesAccepted()) {
+                cookieContainer.style.display = "none";
+            }
+        }
+
+        // Check the cookie value and hide the message on page load
+        window.addEventListener("load", hideCookieMessage);
+
+        // Event listener for the "Accept All Cookies" button
+        document
+            .getElementById("accept-cookies-btn")
+            .addEventListener("click", function() {
+                // Set the "cookies_accepted" cookie to "true"
+                document.cookie = "cookies_accepted=true; path=/";
+
+                // Hide the cookie message immediately
+                hideCookieMessage();
+            });
+
+        // Check the cookie value and hide the message after a short delay
+        setTimeout(hideCookieMessage, 1);
+    </script>
 </body>
 
 </html>

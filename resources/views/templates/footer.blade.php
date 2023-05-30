@@ -117,7 +117,7 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
                 <!-- CONTACT INFO PREVIEW -->
                 <div class="contact-info-preview negative">
                     <p class="contact-info-preview-text">{{ $configurations['website_contact_info'] ?? '' }}</p>
-                
+
                     <!-- CONTACT INFO PREVIEW EMAIL WRAP -->
                     <div class="contact-info-preview-email-wrap">
                         <i class="email-icon icon-envelope"></i>
@@ -273,6 +273,16 @@ $partnerships = App\Helpers\CommonHelper::getPartnerships();
         <!-- /FOOTER TOP WIDGETS -->
     </div>
     <!-- /FOOTER TOP -->
+    <div id="accept" class="cookie-container">
+        <div id="contentBox" class="cookie-box">
+            <div class="cookie-text">
+                <strong>We use cookies</strong> by clicking “Accept All Cookies”, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts.
+            </div>
+            <div class="cookie-action">
+                <button id="accept-cookies-btn" class="btn-ctrl btn-blue" type="button">Accept All Cookies</button>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- /FOOTER TOP WRAP -->
 
