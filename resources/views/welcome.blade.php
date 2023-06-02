@@ -274,6 +274,13 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
                 <!-- /PROMO BANNER -->
             </a>
         </div>
+        @else
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3111379389900750" crossorigin="anonymous"></script>
+        <!-- Ads Header -->
+        <ins class="adsbygoogle" style="display:inline-block;width:870px;height:200px" data-ad-client="ca-pub-3111379389900750" data-ad-slot="8249616221"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
         @endif
         <!-- /LAYOUT ITEM -->
 

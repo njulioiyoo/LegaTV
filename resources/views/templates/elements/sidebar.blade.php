@@ -158,4 +158,19 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
         <!-- /POST PREVIEW SHOWCASE -->
     </div>
     @endif
+
+    <!-- WIDGET SIDEBAR -->
+    <div class="widget-sidebar">
+        <!-- PROMO ADVERT -->
+        <div class="promo-advert">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3111379389900750" crossorigin="anonymous"></script>
+            <!-- Ads Footer -->
+            <ins class="adsbygoogle" style="display:inline-block;width:250px;height:250px" data-ad-client="ca-pub-3111379389900750" data-ad-slot="3950145697"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <!-- /PROMO ADVERT -->
+    </div>
+    <!-- /WIDGET SIDEBAR -->
 </div>
