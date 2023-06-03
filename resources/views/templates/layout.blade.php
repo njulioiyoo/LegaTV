@@ -37,14 +37,13 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
 
     <title>{{ $configurations['website_name'] ?? '' }} - @yield('title')</title>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3111379389900750" crossorigin="anonymous"></script>
-
     <meta property="og:title" content="{{ $configurations['website_name'] }}" />
     <meta property="og:description" content="{{ $configurations['website_description'] }}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.legatvonline.com" />
     <meta property="og:site_name" content="{{ $configurations['website_name'] }}">
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3111379389900750" crossorigin="anonymous"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PKT7G0HD0G"></script>
     <script>
