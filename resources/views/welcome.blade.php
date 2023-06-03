@@ -275,12 +275,14 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
             </a>
         </div>
         @else
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3111379389900750" crossorigin="anonymous"></script>
-        <!-- Ads Header -->
-        <ins class="adsbygoogle" style="display:inline-block;width:870px;height:200px" data-ad-client="ca-pub-3111379389900750" data-ad-slot="8249616221"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <div class="layout-item padded">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3111379389900750" crossorigin="anonymous"></script>
+            <!-- 870x200 -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3111379389900750" data-ad-slot="8249616221" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
         @endif
         <!-- /LAYOUT ITEM -->
 
