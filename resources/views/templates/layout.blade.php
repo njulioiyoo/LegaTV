@@ -12,7 +12,7 @@ $configurations = App\Helpers\CommonHelper::getConfigurations();
     <meta name="author" content="{{ $configurations['website_name'] }}">
     <meta name="googlebot" content="index,follow">
     <meta name="googlebot-news" content="index,follow">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @if (\Route::currentRouteName() != 'news.detail' && \Route::currentRouteName() != 'program.detail' && Route::currentRouteName() != 'article.detail')
     <meta name="title" content="Berita Terkini dan Informasi Terbaru Hari Ini">

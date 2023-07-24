@@ -3,7 +3,9 @@
 namespace App\Helpers;
 
 use App\Models\Configuration;
+use App\Models\Content;
 use App\Models\News;
+use App\Models\ShareCount;
 use App\Models\Partnership;
 use App\Models\Program;
 use Illuminate\Support\Facades\DB;
@@ -143,5 +145,32 @@ class CommonHelper
         $total_viewed_yesterday = self::getTotalViewedYesterday($model, $type);
 
         return $total_viewed_yesterday != 0 ? ($total_viewed_today - $total_viewed_yesterday) / $total_viewed_yesterday * 100 : 0;
+    }
+
+    public static function getFacebookShareCount()
+    {
+        $slug = request()->segment(2);
+        $contentId = Content::select('id', 'slug')->where('slug', $slug)->first();
+
+        return ShareCount::where(
+            ['content_id' => $contentId->id],
+            ['social_media' => 'facebook']
+        )->value('count');
+    }
+
+    public static function getTwitterShareCount()
+    {
+        $slug = request()->segment(2);
+        $contentId = Content::select('id', 'slug')->where('slug', $slug)->first();
+
+        return ShareCount::where(
+            ['content_id' => $contentId->id],
+            ['social_media' => 'twitter']
+        )->value('count');
+    }
+
+    public static function getWhatsappShareCount()
+    {
+        return ShareCount::where('social_media', 'whatsapp')->value('count');
     }
 }

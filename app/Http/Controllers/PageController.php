@@ -6,6 +6,7 @@ use App\Models\News;
 use App\Models\Program;
 use App\Helpers\CommonHelper;
 use App\Models\Article;
+use App\Models\ShareCount;
 use App\Models\Content;
 use Illuminate\Http\Request;
 
@@ -231,5 +232,42 @@ class PageController extends Controller
         }
 
         return view('pages.search', compact('search'));
+    }
+
+    public function updateShareCount(Request $request)
+    {
+        $socialMedia = $request->input('social_media');
+        $shareUrl = $request->input('share_url');
+
+        $slug = pathinfo(parse_url($shareUrl, PHP_URL_PATH), PATHINFO_FILENAME);
+        $contentId = Content::select('id')->where('slug', $slug)->value('id');
+
+        // Memastikan social media yang valid
+        if ($socialMedia === 'facebook' || $socialMedia === 'twitter' || $socialMedia === 'whatsapp') {
+            // Contoh: Menambahkan jumlah berbagi di database
+            // Ambil jumlah berbagi saat ini dari database
+            $shareCount = ShareCount::where([
+                'content_id' => $contentId,
+                'social_media' => $socialMedia,
+            ])->value('count');
+
+            // Tambahkan jumlah berbagi
+            $newShareCount = $shareCount + 1;
+
+            // Simpan jumlah berbagi yang baru ke database
+            ShareCount::updateOrCreate(
+                [
+                    'content_id' => $contentId,
+                    'social_media' => $socialMedia,
+                ],
+                ['count' => $newShareCount]
+            );
+
+            // Mengirimkan respons dengan jumlah berbagi yang diperbarui
+            return response()->json(['share_count' => $newShareCount]);
+        }
+
+        // Mengirimkan respons jika social media tidak valid
+        return response()->json(['error' => 'Invalid social media']);
     }
 }

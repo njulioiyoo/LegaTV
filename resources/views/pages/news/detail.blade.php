@@ -80,6 +80,42 @@
                         <!-- /POST OPEN CONTENT -->
                     </div>
                     <!-- /POST OPEN BODY -->
+                    <!-- POST OPEN SIDEBAR -->
+                    <div class="post-open-sidebar">
+                        @php
+                        $getFacebookShareCount = App\Helpers\CommonHelper::getFacebookShareCount();
+                        $getTwitterShareCount = App\Helpers\CommonHelper::getTwitterShareCount();
+                        $getWhatsappShareCount = App\Helpers\CommonHelper::getWhatsappShareCount();
+                        @endphp
+                        <!-- SOCIAL LINKS -->
+                        <div class="social-links medium vertical animated">
+                            <!-- BUBBLE ORNAMENT -->
+                            <a href="#" class="bubble-ornament big fb" data-url="{{ url()->current() }}" data-social="facebook">
+                                <!-- FACEBOOK ICON -->
+                                <svg class="facebook-icon big">
+                                    <use xlink:href="#svg-facebook"></use>
+                                </svg>
+                                <!-- /FACEBOOK ICON -->
+                                <p class="bubble-ornament-text">{{ $getFacebookShareCount }}</p>
+                                <p class="bubble-ornament-text hover-replace">Share</p>
+                            </a>
+                            <!-- /BUBBLE ORNAMENT -->
+
+                            <!-- BUBBLE ORNAMENT -->
+                            <a href="#" class="bubble-ornament big twt" data-url="{{ url()->current() }}" data-social="twitter">
+                                <!-- TWITTER ICON -->
+                                <svg class="twitter-icon big">
+                                    <use xlink:href="#svg-twitter"></use>
+                                </svg>
+                                <!-- /TWITTER ICON -->
+                                <p class="bubble-ornament-text">{{ $getTwitterShareCount }}</p>
+                                <p class="bubble-ornament-text hover-replace">Share</p>
+                            </a>
+                            <!-- /BUBBLE ORNAMENT -->
+                        </div>
+                        <!-- /SOCIAL LINKS -->
+                    </div>
+                    <!-- /POST OPEN SIDEBAR -->
                 </div>
                 <!-- /POST OPEN CONTENT -->
             </div>
@@ -144,3 +180,64 @@
 </div>
 <!-- /LAYOUT CONTENT 1 -->
 @endsection
+
+@push('script')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var buttons = document.querySelectorAll('.bubble-ornament.big');
+
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                var shareUrl = this.dataset.url;
+                var socialMedia = this.dataset.social;
+
+                // Buat objek XMLHTTPRequest
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/update-share-count');
+                xhr.setRequestHeader('Content-Type', 'application/json');
+
+                var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
+
+                // Tangani respons dari server
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+
+                        // Tanggapi respons dari server (jika ada)
+                        console.log('Response:', response);
+
+                        // Perbarui tampilan jumlah berbagi dengan respons yang diterima
+                        var shareCountElement = button.querySelector('.bubble-ornament-text');
+                        shareCountElement.textContent = response.share_count;
+                    } else {
+                        console.error('Error:', xhr.status);
+                    }
+                };
+
+                // Tangani kesalahan koneksi
+                xhr.onerror = function() {
+                    console.error('Request failed.');
+                };
+
+                // Kirim permintaan untuk memperbarui jumlah berbagi
+                xhr.send(JSON.stringify({
+                    social_media: socialMedia,
+                    share_url: shareUrl
+                }));
+
+                // Contoh penggunaan: Membuka jendela pop-up share Facebook atau Twitter
+                if (socialMedia === 'facebook') {
+                    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl), 'Share on Facebook', 'width=600,height=400');
+                } else if (socialMedia === 'twitter') {
+                    window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(shareUrl), 'Share on Twitter', 'width=600,height=400');
+                } else if (socialMedia === 'whatsapp') {
+                    var whatsappMessage = 'Check out this link: ' + shareUrl;
+                    window.location.href = 'whatsapp://send?text=' + encodeURIComponent(whatsappMessage);
+                }
+            });
+        });
+    });
+</script>
+@endpush
