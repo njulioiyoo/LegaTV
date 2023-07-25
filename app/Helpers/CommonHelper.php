@@ -152,10 +152,10 @@ class CommonHelper
         $slug = request()->segment(2);
         $contentId = Content::select('id', 'slug')->where('slug', $slug)->first();
 
-        return ShareCount::where(
-            ['content_id' => $contentId->id],
-            ['social_media' => 'facebook']
-        )->value('count');
+        return ShareCount::where([
+            'content_id' => $contentId->id,
+            'social_media' => 'facebook'
+        ])->value('count');
     }
 
     public static function getTwitterShareCount()
@@ -163,10 +163,10 @@ class CommonHelper
         $slug = request()->segment(2);
         $contentId = Content::select('id', 'slug')->where('slug', $slug)->first();
 
-        return ShareCount::where(
-            ['content_id' => $contentId->id],
-            ['social_media' => 'twitter']
-        )->value('count');
+        return ShareCount::where([
+            'content_id' => $contentId->id,
+            'social_media' => 'twitter'
+        ])->value('count');
     }
 
     public static function getWhatsappShareCount()

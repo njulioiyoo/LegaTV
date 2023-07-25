@@ -85,7 +85,6 @@
                         @php
                         $getFacebookShareCount = App\Helpers\CommonHelper::getFacebookShareCount();
                         $getTwitterShareCount = App\Helpers\CommonHelper::getTwitterShareCount();
-                        $getWhatsappShareCount = App\Helpers\CommonHelper::getWhatsappShareCount();
                         @endphp
                         <!-- SOCIAL LINKS -->
                         <div class="social-links medium vertical animated">
