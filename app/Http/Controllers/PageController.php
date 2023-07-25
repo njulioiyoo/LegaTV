@@ -157,7 +157,7 @@ class PageController extends Controller
 
     public function article()
     {
-        $article = Article::select('name', 'slug', 'image', 'source', 'body', 'author', 'parent_id', 'created_at')->with(['user' => function ($query) {
+        $article = Article::select('name', 'slug', 'image', 'source', 'description', 'author', 'parent_id', 'created_at')->with(['user' => function ($query) {
             $query->select('id', 'name', 'email');
         }, 'parent' => function ($query) {
             $query->select('id', 'name');

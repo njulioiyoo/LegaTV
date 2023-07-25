@@ -46,10 +46,6 @@
                 </a>
                 <!-- /POST PREVIEW IMG WRAP -->
 
-                <!-- TAG ORNAMENT -->
-                <!-- <a href="#" class="tag-ornament">{{ $a['parent']->name }}</a> -->
-                <!-- /TAG ORNAMENT -->
-
                 <!-- POST PREVIEW TITLE -->
                 <a href="{{ route('article.detail', $a['slug']) }}" class="post-preview-title">{{ $a['name'] }}</a>
                 <!-- POST AUTHOR INFO -->
@@ -65,7 +61,7 @@
                 </div>
                 <!-- /POST AUTHOR INFO -->
                 <!-- POST PREVIEW TEXT -->
-                <p class="post-preview-text">{!! Str::limit($a['body'], 200) !!}</p>
+                <p class="post-preview-text">{!! Str::limit($a['description'], 200) !!}</p>
             </div>
             @endforeach
             <!-- /POST PREVIEW -->
